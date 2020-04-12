@@ -11,7 +11,6 @@ public class ThemePage {
     private By bodyTheme = By.xpath("//article[@class='misago-markup']//p[1]");
     private By buttonReply = By.xpath("(//button[contains(@class,'btn btn-primary')])[1]");
     private By buttonSubmit = By.xpath("//button[@type='submit']");
-    private By buttonSendResponse = By.xpath("//button[@type='submit']");
     private By fieldResponse = By.xpath("//textarea[@class='form-control']");
     private By fieldSendedRespons = By.xpath("//article[@class='misago-markup']//p");
     private By buttonChangeNameTheme = By.xpath("//button[@title='Изменить название']");
@@ -24,10 +23,8 @@ public class ThemePage {
     private By filedAvailableOptions2 = By.xpath("(//input[@placeholder='выбрать метку'])[2]");
     private By fieldNumberDaysVoit = By.xpath("(//input[@class='form-control'])[3]");
     private By fieldNumberOfOptions = By.xpath("(//input[@class='form-control'])[4]");
-    private By buttonSendMessageWithVoting = By.xpath("//button[@type='submit']");
     private By alertSuccess = By.xpath("//p[@class='alert alert-success']");
     private By checksBoxAnswer = By.xpath("//button[@class='btn']//span");
-    private By buttonSaveYourAnswer = By.xpath("//button[@type='submit']");
     private By activSubscribeStatus = By.xpath("(//ul[contains(@class,'dropdown-menu dropdown-menu-right')]//button)[2]");
     private By dropDownMenu = By.xpath("(//button[@data-toggle='dropdown'])[2]");
 
