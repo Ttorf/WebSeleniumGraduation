@@ -3,6 +3,7 @@ package graduation.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.w3c.dom.Element;
 import settings.SettingWebDriver;
 
 import java.util.List;
@@ -110,7 +111,7 @@ public class HomePage {
         Thread.sleep(3000);
     }
 
-    public void creatNewTheme(String nameTheme,String bodyTheme) throws InterruptedException {
+    public void creatNewTheme(String nameTheme, String bodyTheme) throws InterruptedException {
         Thread.sleep(4000);
         clickNewTheme();
         Thread.sleep(3000);
@@ -125,14 +126,13 @@ public class HomePage {
     }
 
     private void meth1(HomePage homePage) throws InterruptedException {
+
         ThemePage themePage = new ThemePage(homePage.getWebDriver());
         homePage.authorization("Torf", "654321ss");
         Thread.sleep(4000);
-        homePage.webDriver.get("https://dev.n7lanit.ru/t/nametheme1/46/");
-        themePage.clickRandomCheckBox();
-        Thread.sleep(4000);
-        themePage.clickButtonSaveYourAnswer();
+        homePage.webDriver.get("https://dev.n7lanit.ru/t/nametheme1/57/");
 
+        closeWeb();
     }
 
 

@@ -29,7 +29,8 @@ public class ThemePage {
     private By alertSuccess = By.xpath("//p[@class='alert alert-success']");
     private By checksBoxAnswer = By.xpath("//button[@class='btn']//span");
     private By buttonSaveYourAnswer = By.xpath("//button[@type='submit']");
-
+    private By activSubscribeStatus = By.xpath("(//ul[contains(@class,'dropdown-menu dropdown-menu-right')]//button)[2]");
+    private By dropDownMenu = By.xpath("(//button[@data-toggle='dropdown'])[2]");
 
     public ThemePage(WebDriver webDriver) {
         this.webDriver = webDriver;
@@ -46,6 +47,25 @@ public class ThemePage {
     public String bodyTheme() {
         return webDriver.findElement(bodyTheme).getText();
 
+    }
+
+    public ThemePage clickAstivSubscribeStatus() {
+        WebElement webElement = webDriver.findElement(activSubscribeStatus);
+        webElement.click();
+        return this;
+    }
+
+    public ThemePage clickDropDownMenu() {
+        WebElement webElement = webDriver.findElement(dropDownMenu);
+        webElement.click();
+        return this;
+    }
+
+    public String dropDownMenuStatusGetText() {
+        WebElement webElement = webDriver.findElement(dropDownMenu);
+        StringBuilder stb = new StringBuilder(webElement.getText());
+        stb.delete(0, 9);
+        return String.valueOf(stb);
     }
 
     public ThemePage clickRandomCheckBox() {
