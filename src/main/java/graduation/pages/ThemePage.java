@@ -19,6 +19,14 @@ public class ThemePage {
     private By fieldNameTheme = By.xpath("(//input[@class='form-control'])[2]");
     private By buttonSaveChangeThemeName = By.xpath("//button[@title='Изменить название']");
     private By nameTheme = By.tagName("h1");
+    private By buttonAddSurvey = By.xpath("(//div[@class='col-sm-4 hidden-xs']//button)[1]");
+    private By fieldQuestion = By.xpath("(//input[@class='form-control'])[2]");
+    private By filedAvailableOptions1 = By.xpath("(//input[@placeholder='выбрать метку'])[1]");
+    private By filedAvailableOptions2 = By.xpath("(//input[@placeholder='выбрать метку'])[2]");
+    private By fieldNumberDaysVoit = By.xpath("(//input[@class='form-control'])[3]");
+    private By fieldNumberOfOptions = By.xpath("(//input[@class='form-control'])[4]");
+    private By buttonSendMessageWithVoting = By.xpath("//button[@type='submit']");
+    private By alertSuccess = By.xpath("//p[@class='alert alert-success']");
 
     public ThemePage(WebDriver webDriver) {
         this.webDriver = webDriver;
@@ -35,6 +43,61 @@ public class ThemePage {
     public String bodyTheme() {
         return webDriver.findElement(bodyTheme).getText();
 
+    }
+
+    public boolean alertSuccessMessage(){
+        WebElement webElement = webDriver.findElement(alertSuccess);
+       return webElement.isDisplayed();
+
+    }
+
+    public ThemePage clickButtonSendMessageWithVoting() {
+        WebElement webElement = webDriver.findElement(buttonSendMessageWithVoting);
+        webElement.click();
+        return this;
+    }
+
+    public ThemePage sendKeyfieldNumberOfOptions(String numberOfOptions) {
+        WebElement webElement = webDriver.findElement(fieldNumberOfOptions);
+        webElement.click();
+        webElement.clear();
+        webElement.sendKeys(numberOfOptions);
+        return this;
+    }
+
+    public ThemePage sendKeyfieldNumberDaysVoit(String numberDaysVoit) {
+        WebElement webElement = webDriver.findElement(fieldNumberDaysVoit);
+        webElement.click();
+        webElement.clear();
+        webElement.sendKeys(numberDaysVoit);
+        return this;
+    }
+
+    public ThemePage sendKeyfiledAvailableOptions2(String availableOptions2) {
+        WebElement webElement = webDriver.findElement(filedAvailableOptions2);
+        webElement.click();
+        webElement.sendKeys(availableOptions2);
+        return this;
+    }
+
+    public ThemePage sendKeyfiledAvailableOptions1(String availableOptions1) {
+        WebElement webElement = webDriver.findElement(filedAvailableOptions1);
+        webElement.click();
+        webElement.sendKeys(availableOptions1);
+        return this;
+    }
+
+    public ThemePage sendKeyFieldQuestion(String question) {
+        WebElement webElement = webDriver.findElement(fieldQuestion);
+        webElement.click();
+        webElement.sendKeys(question);
+        return this;
+    }
+
+    public ThemePage clickButtonAddSurvey() {
+        WebElement webElement = webDriver.findElement(buttonAddSurvey);
+        webElement.click();
+        return this;
     }
 
     public boolean buttonSaveChangeThemeNameIsDisplayed() {

@@ -37,8 +37,7 @@ public class StepsTestCreatNewTheme {
     }
 
     @Тогда("^пользователь переходит на страницу созданной темы$")
-    public void getNameThemeOnNewPage() throws InterruptedException {
-      themePage = new  ThemePage(homePage.getWebDriver());
+    public void getNameThemeOnNewPage() throws InterruptedException { ;
         Thread.sleep(6000);
         Assert.assertEquals(bodyTheme, themePage.bodyTheme());
         themePage.closeWeb();
