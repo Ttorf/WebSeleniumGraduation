@@ -27,6 +27,9 @@ public class ThemePage {
     private By fieldNumberOfOptions = By.xpath("(//input[@class='form-control'])[4]");
     private By buttonSendMessageWithVoting = By.xpath("//button[@type='submit']");
     private By alertSuccess = By.xpath("//p[@class='alert alert-success']");
+    private By checkBoxAnswers = By.xpath("//button[@class='btn']//span");
+    private By buttonSaveYourAnswer = By.xpath("");
+
 
     public ThemePage(WebDriver webDriver) {
         this.webDriver = webDriver;
@@ -45,9 +48,9 @@ public class ThemePage {
 
     }
 
-    public boolean alertSuccessMessage(){
+    public boolean alertSuccessMessage() {
         WebElement webElement = webDriver.findElement(alertSuccess);
-       return webElement.isDisplayed();
+        return webElement.isDisplayed();
 
     }
 

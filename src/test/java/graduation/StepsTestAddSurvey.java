@@ -66,7 +66,7 @@ public class StepsTestAddSurvey {
     }
 
     @Тогда("^пользователь видит сообщение \"(.*)\"$")
-    public void viewOwnVoting(String alert) throws InterruptedException {
+    public void viewAlertSuccess(String alert) throws InterruptedException {
         this.alert = alert;
         Thread.sleep(2000);
         Assert.assertEquals(true, themePage.buttonSaveChangeThemeNameIsDisplayed());
