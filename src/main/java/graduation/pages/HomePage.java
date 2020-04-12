@@ -3,7 +3,6 @@ package graduation.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import settings.SettingWebDriver;
 
 
 public class HomePage {
@@ -18,7 +17,7 @@ public class HomePage {
     private By buttonCreatTheme = By.xpath("//button[text()='Опубликовать тему']");
     private By userAvatar = By.xpath("(//a[@data-toggle='dropdown'])[2]");
     private By openProfile = By.xpath("(//ul[@role='menu']//a)[1]");
-
+    private By openSetting = By.xpath("//a[@href='/options/']");
 
     private WebDriver webDriver;
 
@@ -28,6 +27,12 @@ public class HomePage {
 
     public WebDriver getWebDriver() {
         return webDriver;
+    }
+
+    public HomePage openSetting() {
+        WebElement webElement = webDriver.findElement(openSetting);
+        webElement.click();
+        return this;
     }
 
     public HomePage openAuthorizationPanel() throws InterruptedException {
@@ -131,22 +136,4 @@ public class HomePage {
         clickCreatTheme();
         Thread.sleep(4000);
     }
-
-    public static void main(String[] args) throws InterruptedException {
-        HomePage homePage = new HomePage(SettingWebDriver.setUp());
-        homePage.meth1(homePage);
-    }
-
-    private void meth1(HomePage homePage) throws InterruptedException {
-
-        ProfilePage profilePage = new ProfilePage(homePage.getWebDriver());
-        homePage.authorization("Torf", "654321ss");
-        clickUserAvatar();
-        Thread.sleep(1000);
-        clickOpenProfile();
-        Thread.sleep(2000);
-        System.out.println( profilePage.getNickNameProfile());
-        closeWeb();
-    }
-
 }

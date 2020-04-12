@@ -9,7 +9,6 @@ import org.openqa.selenium.WebDriver;
 import settings.SettingWebDriver;
 
 public class StepsTestAuthorization {
-    WebDriver webDriver;
     String login;
     String pass;
     String message;
