@@ -1,0 +1,9 @@
+.allure
+allure-results
+# IntellijIdea files
+*.iml
+.idea
+out
+
+# Project exclude paths
+/target/
