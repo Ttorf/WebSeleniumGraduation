@@ -3,11 +3,8 @@ package graduation.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.w3c.dom.Element;
 import settings.SettingWebDriver;
 
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 
 public class HomePage {
@@ -136,4 +133,4 @@ public class HomePage {
     }
 
 
-}
+}s
