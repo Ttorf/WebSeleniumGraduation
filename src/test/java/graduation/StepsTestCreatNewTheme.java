@@ -1,6 +1,7 @@
 package graduation;
 
 import graduation.pages.HomePage;
+import graduation.pages.ProfilePage;
 import graduation.pages.ThemePage;
 import io.cucumber.java.ru.Дано;
 import io.cucumber.java.ru.Когда;
@@ -13,7 +14,7 @@ public class StepsTestCreatNewTheme {
     String bodyTheme;
     HomePage homePage = new HomePage(SettingWebDriver.setUp());
     ThemePage themePage = new ThemePage(homePage.getWebDriver());
-
+    ProfilePage profilePage = new ProfilePage(homePage.getWebDriver());
     @Дано("^у пользователя есть название темы \"(.*)\"$")
     public void nameTheme(String stringName) {
         this.nameTheme = stringName;
@@ -28,7 +29,7 @@ public class StepsTestCreatNewTheme {
 
     @Когда("^пользователь заполняет и создаёт тему$")
     public void writeAll() throws InterruptedException {
-        homePage.authorization(themePage.getLogin(), themePage.getPassword());
+        homePage.authorization(profilePage.getLogin(), profilePage.getPassword());
         homePage.clickNewTheme();
         Thread.sleep(3000);
         homePage.writeNewTheme(nameTheme, bodyTheme);

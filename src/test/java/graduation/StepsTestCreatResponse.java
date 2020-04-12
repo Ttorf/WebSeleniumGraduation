@@ -1,6 +1,7 @@
 package graduation;
 
 import graduation.pages.HomePage;
+import graduation.pages.ProfilePage;
 import graduation.pages.ThemePage;
 import io.cucumber.java.ru.Дано;
 import io.cucumber.java.ru.Когда;
@@ -12,7 +13,7 @@ public class StepsTestCreatResponse {
     String bodyResponseTheme;
     HomePage homePage = new HomePage(SettingWebDriver.setUp());
     ThemePage themePage = new ThemePage(homePage.getWebDriver());
-
+    ProfilePage profilePage = new ProfilePage(homePage.getWebDriver());
 
     @Дано("^у пользователя есть тело ответа для темы \"(.*)\"$")
     public void nameBodyResponse(String stringBody) {
@@ -22,7 +23,7 @@ public class StepsTestCreatResponse {
 
     @Когда("^пользователь отправляет ответ$")
     public void sendRespons() throws InterruptedException {
-        homePage.authorization(themePage.getLogin(), themePage.getPassword());
+        homePage.authorization(profilePage.getLogin(), profilePage.getPassword());
         homePage.creatNewTheme("NameTheme1","BodyTheme1");
         themePage.clickButtonReply();
         Thread.sleep(4000);

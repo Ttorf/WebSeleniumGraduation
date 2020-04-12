@@ -1,6 +1,7 @@
 package graduation;
 
 import graduation.pages.HomePage;
+import graduation.pages.ProfilePage;
 import graduation.pages.ThemePage;
 import io.cucumber.java.ru.Когда;
 import io.cucumber.java.ru.Тогда;
@@ -10,11 +11,12 @@ import settings.SettingWebDriver;
 public class StepsTestSubscribeToTopic {
     HomePage homePage = new HomePage(SettingWebDriver.setUp());
     ThemePage themePage = new ThemePage(homePage.getWebDriver());
+    ProfilePage profilePage = new ProfilePage(homePage.getWebDriver());
     String status;
 
     @Когда("^пользователь подписывается на топик$")
     public void subscribe() throws InterruptedException {
-        homePage.authorization(themePage.getLogin(), themePage.getPassword());
+        homePage.authorization(profilePage.getLogin(), profilePage.getPassword());
         homePage.creatNewTheme("NameTheme1", "BodyTheme1");
         Thread.sleep(2000);
         themePage.clickDropDownMenu();

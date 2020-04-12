@@ -6,7 +6,6 @@ import org.openqa.selenium.WebElement;
 import settings.SettingWebDriver;
 
 
-
 public class HomePage {
     private By buttonAuthorization = By.xpath("//button[text() = 'Войти']");
     private By buttonEnterLogin = By.xpath("//*[@id=\"modal-mount\"]/div/div/form/div[2]/button");
@@ -17,6 +16,9 @@ public class HomePage {
     private By headTheme = By.xpath("//input[@placeholder='Заголовок темы']");
     private By bodyTheme = By.xpath("//textarea[@class='form-control']");
     private By buttonCreatTheme = By.xpath("//button[text()='Опубликовать тему']");
+    private By userAvatar = By.xpath("(//a[@data-toggle='dropdown'])[2]");
+    private By openProfile = By.xpath("(//ul[@role='menu']//a)[1]");
+
 
     private WebDriver webDriver;
 
@@ -33,6 +35,19 @@ public class HomePage {
         element.click();
         return this;
     }
+
+    public HomePage clickUserAvatar() {
+        WebElement webElement = webDriver.findElement(userAvatar);
+        webElement.click();
+        return this;
+    }
+
+    public HomePage clickOpenProfile() {
+        WebElement webElement = webDriver.findElement(openProfile);
+        webElement.click();
+        return this;
+    }
+
 
     public boolean newThemeIsDisplayed() throws InterruptedException {
         WebElement element = webDriver.findElement(buttonNewTheme);
@@ -124,13 +139,14 @@ public class HomePage {
 
     private void meth1(HomePage homePage) throws InterruptedException {
 
-        ThemePage themePage = new ThemePage(homePage.getWebDriver());
+        ProfilePage profilePage = new ProfilePage(homePage.getWebDriver());
         homePage.authorization("Torf", "654321ss");
-        Thread.sleep(4000);
-        homePage.webDriver.get("https://dev.n7lanit.ru/t/nametheme1/57/");
-
+        clickUserAvatar();
+        Thread.sleep(1000);
+        clickOpenProfile();
+        Thread.sleep(2000);
+        System.out.println( profilePage.getNickNameProfile());
         closeWeb();
     }
-
 
 }

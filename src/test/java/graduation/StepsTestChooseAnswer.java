@@ -1,6 +1,7 @@
 package graduation;
 
 import graduation.pages.HomePage;
+import graduation.pages.ProfilePage;
 import graduation.pages.ThemePage;
 import io.cucumber.java.ru.Когда;
 import io.cucumber.java.ru.Тогда;
@@ -11,11 +12,12 @@ public class StepsTestChooseAnswer {
     String alert;
     HomePage homePage = new HomePage(SettingWebDriver.setUp());
     ThemePage themePage = new ThemePage(homePage.getWebDriver());
+    ProfilePage profilePage = new ProfilePage(homePage.getWebDriver());
 
 
     @Когда("^пользователь выбрал первый ответ")
     public void chooseAnswer() throws InterruptedException {
-        homePage.authorization(themePage.getLogin(), themePage.getPassword());
+        homePage.authorization(profilePage.getLogin(), profilePage.getPassword());
         homePage.creatNewTheme("NameTheme1","BodyTheme1");
         themePage.clickButtonAddSurvey();
         Thread.sleep(2000);

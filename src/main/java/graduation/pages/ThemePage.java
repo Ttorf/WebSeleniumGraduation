@@ -8,8 +8,6 @@ import java.util.List;
 
 public class ThemePage {
     private WebDriver webDriver;
-    private final String login = "Torf";
-    private final String password = "654321ss";
     private By bodyTheme = By.xpath("//article[@class='misago-markup']//p[1]");
     private By buttonReply = By.xpath("(//button[contains(@class,'btn btn-primary')])[1]");
     private By buttonSendResponse = By.xpath("//button[@type='submit']");
@@ -34,14 +32,6 @@ public class ThemePage {
 
     public ThemePage(WebDriver webDriver) {
         this.webDriver = webDriver;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public String getPassword() {
-        return password;
     }
 
     public String bodyTheme() {
