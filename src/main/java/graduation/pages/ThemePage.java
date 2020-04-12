@@ -27,7 +27,7 @@ public class ThemePage {
     private By fieldNumberOfOptions = By.xpath("(//input[@class='form-control'])[4]");
     private By buttonSendMessageWithVoting = By.xpath("//button[@type='submit']");
     private By alertSuccess = By.xpath("//p[@class='alert alert-success']");
-    private By checkBoxAnswers = By.xpath("//button[@class='btn']//span");
+    private By checksBoxAnswer = By.xpath("//button[@class='btn']//span");
     private By buttonSaveYourAnswer = By.xpath("");
 
 
@@ -47,6 +47,19 @@ public class ThemePage {
         return webDriver.findElement(bodyTheme).getText();
 
     }
+
+    public ThemePage clickRandomCheckBox() {
+        List<WebElement> webElementList = webDriver.findElements(checksBoxAnswer);
+        WebElement webElement = webElementList.get((int) (Math.random() + webElementList.size() - 1));
+        webElement.click();
+        return this;
+    }
+    public ThemePage clickButtonSaveYourAnswer() {
+        WebElement webElement = webDriver.findElement(buttonSaveYourAnswer);
+        webElement.click();
+        return this;
+    }
+
 
     public boolean alertSuccessMessage() {
         WebElement webElement = webDriver.findElement(alertSuccess);

@@ -112,16 +112,16 @@ public class HomePage {
 
 
     public static void main(String[] args) throws InterruptedException {
-//        HomePage homePage = new HomePage(SettingWebDriver.setUp());
-//        homePage.meth1(homePage);
+        HomePage homePage = new HomePage(SettingWebDriver.setUp());
+        homePage.meth1(homePage);
     }
 
     private void meth1(HomePage homePage) throws InterruptedException {
-//        ThemePage themePage = new ThemePage(homePage.getWebDriver());
-//        homePage.authorization("Torf", "654321ss");
-//        Thread.sleep(4000);
-//        homePage.webDriver.get("https://dev.n7lanit.ru/t/novoe-nazvanie-temy/43/");
-//
+        ThemePage themePage = new ThemePage(homePage.getWebDriver());
+        homePage.authorization("Torf", "654321ss");
+        Thread.sleep(4000);
+        homePage.webDriver.get("https://dev.n7lanit.ru/t/novoe-nazvanie-temy/43/");
+
 
 
     }
