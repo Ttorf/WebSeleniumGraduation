@@ -28,7 +28,7 @@ public class ThemePage {
     private By buttonSendMessageWithVoting = By.xpath("//button[@type='submit']");
     private By alertSuccess = By.xpath("//p[@class='alert alert-success']");
     private By checksBoxAnswer = By.xpath("//button[@class='btn']//span");
-    private By buttonSaveYourAnswer = By.xpath("");
+    private By buttonSaveYourAnswer = By.xpath("//button[@type='submit']");
 
 
     public ThemePage(WebDriver webDriver) {

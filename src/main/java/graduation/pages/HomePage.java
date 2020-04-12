@@ -120,8 +120,10 @@ public class HomePage {
         ThemePage themePage = new ThemePage(homePage.getWebDriver());
         homePage.authorization("Torf", "654321ss");
         Thread.sleep(4000);
-        homePage.webDriver.get("https://dev.n7lanit.ru/t/novoe-nazvanie-temy/43/");
-
+        homePage.webDriver.get("https://dev.n7lanit.ru/t/vypusknaia-rabota/45/");
+        themePage.clickRandomCheckBox();
+        Thread.sleep(4000);
+        themePage.clickButtonSaveYourAnswer();
 
 
     }
