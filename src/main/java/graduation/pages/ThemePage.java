@@ -10,6 +10,7 @@ public class ThemePage {
     private WebDriver webDriver;
     private By bodyTheme = By.xpath("//article[@class='misago-markup']//p[1]");
     private By buttonReply = By.xpath("(//button[contains(@class,'btn btn-primary')])[1]");
+    private By buttonSubmit = By.xpath("//button[@type='submit']");
     private By buttonSendResponse = By.xpath("//button[@type='submit']");
     private By fieldResponse = By.xpath("//textarea[@class='form-control']");
     private By fieldSendedRespons = By.xpath("//article[@class='misago-markup']//p");
@@ -66,7 +67,7 @@ public class ThemePage {
     }
 
     public ThemePage clickButtonSaveYourAnswer() {
-        WebElement webElement = webDriver.findElement(buttonSaveYourAnswer);
+        WebElement webElement = webDriver.findElement(buttonSubmit);
         webElement.click();
         return this;
     }
@@ -88,7 +89,7 @@ public class ThemePage {
     }
 
     public ThemePage clickButtonSendMessageWithVoting() {
-        WebElement webElement = webDriver.findElement(buttonSendMessageWithVoting);
+        WebElement webElement = webDriver.findElement(buttonSubmit);
         webElement.click();
         return this;
     }
@@ -180,7 +181,7 @@ public class ThemePage {
     }
 
     public ThemePage clickButtonSendResponse() {
-        WebElement webElement = webDriver.findElement(buttonSendResponse);
+        WebElement webElement = webDriver.findElement(buttonSubmit);
         webElement.click();
         return this;
     }
