@@ -47,19 +47,10 @@ public class StepsTestAddSurvey {
     @Когда("^пользователь заполняет форму и отправляет сообщение с голосованием$")
     public void sendingAVotingMessage() throws InterruptedException {
         homePage.authorization(themePage.getLogin(), themePage.getPassword());
-        Thread.sleep(3000);
-        homePage.clickNewTheme();
-        Thread.sleep(3000);
-        homePage.writeNewTheme("nameTheme1", "bodyTheme1");
-        homePage.clickCreatTheme();
-        Thread.sleep(2000);
+        homePage.creatNewTheme("NameTheme1","BodyTheme1");
         themePage.clickButtonAddSurvey();
         Thread.sleep(2000);
-        themePage.sendKeyFieldQuestion(nameVoting);
-        themePage.sendKeyfiledAvailableOptions1(answerQFirst);
-        themePage.sendKeyfiledAvailableOptions2(answerQSecond);
-        themePage.sendKeyfieldNumberDaysVoit(String.valueOf(numberDays));
-        themePage.sendKeyfieldNumberOfOptions(String.valueOf(allowedAnswerOptions));
+        themePage.writeVoit(nameVoting,answerQFirst,answerQSecond,numberDays,allowedAnswerOptions);
         Thread.sleep(2000);
         themePage.clickButtonSendMessageWithVoting();
 

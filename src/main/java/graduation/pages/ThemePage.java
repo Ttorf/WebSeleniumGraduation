@@ -54,6 +54,7 @@ public class ThemePage {
         webElement.click();
         return this;
     }
+
     public ThemePage clickButtonSaveYourAnswer() {
         WebElement webElement = webDriver.findElement(buttonSaveYourAnswer);
         webElement.click();
@@ -65,6 +66,15 @@ public class ThemePage {
         WebElement webElement = webDriver.findElement(alertSuccess);
         return webElement.isDisplayed();
 
+    }
+
+    public void writeVoit(String nameVoting, String answerQFirst, String answerQSecond, int numberDays, int allowedAnswerOptions) throws InterruptedException {
+        sendKeyFieldQuestion(nameVoting);
+        sendKeyfiledAvailableOptions1(answerQFirst);
+        sendKeyfiledAvailableOptions2(answerQSecond);
+        sendKeyfieldNumberDaysVoit(String.valueOf(numberDays));
+        sendKeyfieldNumberOfOptions(String.valueOf(allowedAnswerOptions));
+        Thread.sleep(1000);
     }
 
     public ThemePage clickButtonSendMessageWithVoting() {

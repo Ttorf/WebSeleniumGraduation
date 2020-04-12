@@ -29,7 +29,6 @@ public class StepsTestCreatNewTheme {
     @Когда("^пользователь заполняет и создаёт тему$")
     public void writeAll() throws InterruptedException {
         homePage.authorization(themePage.getLogin(), themePage.getPassword());
-        Thread.sleep(4000);
         homePage.clickNewTheme();
         Thread.sleep(3000);
         homePage.writeNewTheme(nameTheme, bodyTheme);

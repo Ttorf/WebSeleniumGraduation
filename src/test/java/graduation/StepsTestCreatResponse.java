@@ -22,15 +22,8 @@ public class StepsTestCreatResponse {
 
     @Когда("^пользователь отправляет ответ$")
     public void sendRespons() throws InterruptedException {
-        String nameTheme = "Name Theme";
-        String bodyTheme = "Body new Theme";
         homePage.authorization(themePage.getLogin(), themePage.getPassword());
-        Thread.sleep(4000);
-        homePage.clickNewTheme();
-        Thread.sleep(3000);
-        homePage.writeNewTheme(nameTheme, bodyTheme);
-        homePage.clickCreatTheme();
-        Thread.sleep(4000);
+        homePage.creatNewTheme("NameTheme1","BodyTheme1");
         themePage.clickButtonReply();
         Thread.sleep(4000);
         themePage.sendKeyRespons(bodyResponseTheme);

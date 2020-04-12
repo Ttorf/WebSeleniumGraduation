@@ -12,21 +12,27 @@ public class StepsTestChooseAnswer {
     HomePage homePage = new HomePage(SettingWebDriver.setUp());
     ThemePage themePage = new ThemePage(homePage.getWebDriver());
 
-    // Когда пользователь выбрал первый ответ и сохранил результат
-    //    Тогда пользователь видит сообщение "Ваш голос был сохранен"
-    @Когда("^пользователь выбрал первый ответ и сохранил результат")
-    public void name() throws InterruptedException {
+
+    @Когда("^пользователь выбрал первый ответ")
+    public void chooseAnswer() throws InterruptedException {
         homePage.authorization(themePage.getLogin(), themePage.getPassword());
-        Thread.sleep(3000);
-        homePage.clickNewTheme();
-        Thread.sleep(3000);
-        homePage.writeNewTheme("nameTheme1", "bodyTheme1");
-        homePage.clickCreatTheme();
+        homePage.creatNewTheme("NameTheme1","BodyTheme1");
+        themePage.clickButtonAddSurvey();
         Thread.sleep(2000);
-        //клик на чекбокс
-        // клик на сохранить ваш голос;
+        themePage.writeVoit("Голосование","answerQFirst","answerQSecond",2,2);
+        Thread.sleep(2000);
+        themePage.clickButtonSendMessageWithVoting();
+        Thread.sleep(2000);
+        themePage.clickRandomCheckBox();
 
     }
+
+    @Когда("^пользователь сохранил результат")
+    public void saveResult() throws InterruptedException {
+        Thread.sleep(3000);
+        themePage.clickButtonSaveYourAnswer();
+    }
+
 
     @Тогда("^пользователь видит сообщение об удачном голосовании \"(.*)\"$")
     public void viewAlert(String alert) throws InterruptedException {

@@ -83,7 +83,7 @@ public class HomePage {
         sendKeysLogin(login);
         sendKeysPass(password);
         clickButtonEnterLogin();
-
+        Thread.sleep(2000);
     }
 
     public String getAlert() {
@@ -110,6 +110,14 @@ public class HomePage {
         Thread.sleep(3000);
     }
 
+    public void creatNewTheme(String nameTheme,String bodyTheme) throws InterruptedException {
+        Thread.sleep(4000);
+        clickNewTheme();
+        Thread.sleep(3000);
+        writeNewTheme(nameTheme, bodyTheme);
+        clickCreatTheme();
+        Thread.sleep(4000);
+    }
 
     public static void main(String[] args) throws InterruptedException {
         HomePage homePage = new HomePage(SettingWebDriver.setUp());
@@ -120,12 +128,12 @@ public class HomePage {
         ThemePage themePage = new ThemePage(homePage.getWebDriver());
         homePage.authorization("Torf", "654321ss");
         Thread.sleep(4000);
-        homePage.webDriver.get("https://dev.n7lanit.ru/t/vypusknaia-rabota/45/");
+        homePage.webDriver.get("https://dev.n7lanit.ru/t/nametheme1/46/");
         themePage.clickRandomCheckBox();
         Thread.sleep(4000);
         themePage.clickButtonSaveYourAnswer();
 
-
     }
+
 
 }

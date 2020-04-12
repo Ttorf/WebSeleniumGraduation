@@ -22,12 +22,7 @@ public class StepsTestChangeNameTheme {
     @Когда("^пользователь  изменяет название темы$")
     public void changeNameTheme() throws InterruptedException {
         homePage.authorization(themePage.getLogin(), themePage.getPassword());
-        Thread.sleep(3000);
-        homePage.clickNewTheme();
-        Thread.sleep(3000);
-        homePage.writeNewTheme("nameTheme", "bodyTheme");
-        homePage.clickCreatTheme();
-        Thread.sleep(4000);
+        homePage.creatNewTheme("NameTheme1","BodyTheme1");
         themePage.clickButtonChangeNameTheme();
         Thread.sleep(4000);
 
@@ -36,7 +31,6 @@ public class StepsTestChangeNameTheme {
     @Тогда("^пользователь видит форму для изменения темы$")
     public void getFormChangeNameTheme() {
         Assert.assertEquals(true, themePage.buttonSaveChangeThemeNameIsDisplayed());
-        //найти и сравнить кнопку Сохранить изменеия, для подверждения появления данной формы
     }
 
     @Когда("^пользователь вводит новое название темы и сохраняет изменения$")
