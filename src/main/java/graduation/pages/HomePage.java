@@ -25,7 +25,6 @@ public class HomePage {
 
     public HomePage(WebDriver webDriver) {
         this.webDriver = webDriver;
-       // webDriver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
     }
 
     public WebDriver getWebDriver() {

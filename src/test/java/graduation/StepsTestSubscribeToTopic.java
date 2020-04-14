@@ -6,7 +6,7 @@ import graduation.pages.ThemePage;
 import io.cucumber.java.ru.Когда;
 import io.cucumber.java.ru.Тогда;
 import org.junit.Assert;
-import settings.SettingWebDriver;
+import graduation.settings.SettingWebDriver;
 
 public class StepsTestSubscribeToTopic {
     HomePage homePage = new HomePage(SettingWebDriver.setUp());

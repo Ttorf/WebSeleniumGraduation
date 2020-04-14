@@ -5,8 +5,7 @@ import io.cucumber.java.ru.Дано;
 import io.cucumber.java.ru.Когда;
 import io.cucumber.java.ru.Тогда;
 import org.junit.Assert;
-import org.openqa.selenium.WebDriver;
-import settings.SettingWebDriver;
+import graduation.settings.SettingWebDriver;
 
 public class StepsTestAuthorization {
     String login;

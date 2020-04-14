@@ -7,7 +7,7 @@ import io.cucumber.java.ru.Дано;
 import io.cucumber.java.ru.Когда;
 import io.cucumber.java.ru.Тогда;
 import org.junit.Assert;
-import settings.SettingWebDriver;
+import graduation.settings.SettingWebDriver;
 
 public class StepsTestChangeNameTheme {
     String newNameTheme;

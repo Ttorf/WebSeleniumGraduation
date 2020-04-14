@@ -5,7 +5,7 @@ import graduation.pages.ProfilePage;
 import io.cucumber.java.ru.Когда;
 import io.cucumber.java.ru.Тогда;
 import org.junit.Assert;
-import settings.SettingWebDriver;
+import graduation.settings.SettingWebDriver;
 
 public class StepsTestOpenProfile {
     HomePage homePage = new HomePage(SettingWebDriver.setUp());
