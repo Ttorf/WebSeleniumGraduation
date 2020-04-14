@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.concurrent.TimeUnit;
+
 
 public class HomePage {
     private By buttonAuthorization = By.xpath("//button[text() = 'Войти']");
@@ -23,6 +25,7 @@ public class HomePage {
 
     public HomePage(WebDriver webDriver) {
         this.webDriver = webDriver;
+       // webDriver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
     }
 
     public WebDriver getWebDriver() {
