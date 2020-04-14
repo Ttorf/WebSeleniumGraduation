@@ -18,10 +18,11 @@ public class StepsTestSubscribeToTopic {
     public void subscribe() throws InterruptedException {
         homePage.authorization(profilePage.getLogin(), profilePage.getPassword());
         homePage.creatNewTheme("NameTheme1", "BodyTheme1");
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         themePage.clickDropDownMenu();
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         themePage.clickAstivSubscribeStatus();
+        Thread.sleep(1000);
 
 
     }

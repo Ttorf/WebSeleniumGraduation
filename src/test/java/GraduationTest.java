@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/test/features",
         glue = "graduation",
-        tags = "@Scenario1",
+        tags = "@Scenario2",
         snippets = CucumberOptions.SnippetType.CAMELCASE
         )
 public class GraduationTest {
