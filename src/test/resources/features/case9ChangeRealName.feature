@@ -1,5 +1,5 @@
 # language: ru
-@Scenario1
+@Scenario2
 @changeRealName
 Функция: изменить реальное имя пользователя
 
