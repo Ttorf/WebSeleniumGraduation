@@ -97,11 +97,11 @@ public class HomePage {
     public void authorization(String login, String password) throws InterruptedException {
         webDriver.get("https://dev.n7lanit.ru/");
         openAuthorizationPanel();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         sendKeysLogin(login);
         sendKeysPass(password);
         clickButtonEnterLogin();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
     }
 
     public String getAlert() {

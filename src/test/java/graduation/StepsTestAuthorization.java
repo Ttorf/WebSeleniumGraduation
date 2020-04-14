@@ -36,7 +36,7 @@ public class StepsTestAuthorization {
         this.message = string;
         String excepted = homePage.getAlert();
         Assert.assertEquals(excepted, message);
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         homePage.closeWeb();
     }
 

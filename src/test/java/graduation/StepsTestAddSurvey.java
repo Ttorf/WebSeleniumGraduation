@@ -50,9 +50,9 @@ public class StepsTestAddSurvey {
         homePage.authorization(profilePage.getLogin(), profilePage.getPassword());
         homePage.creatNewTheme("NameTheme1", "BodyTheme1");
         themePage.clickButtonAddSurvey();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         themePage.writeVoit(nameVoting, answerQFirst, answerQSecond, numberDays, allowedAnswerOptions);
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         themePage.clickButtonSendMessageWithVoting();
 
     }

@@ -26,7 +26,7 @@ public class StepsTestChangeRealName {
         homePage.authorization(profilePage.getLogin(), profilePage.getPassword());
         homePage.clickUserAvatar();
         homePage.openSetting();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
     }
 
     @Когда("^пользователь меняет реальное имя$")

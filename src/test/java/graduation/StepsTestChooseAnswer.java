@@ -20,11 +20,11 @@ public class StepsTestChooseAnswer {
         homePage.authorization(profilePage.getLogin(), profilePage.getPassword());
         homePage.creatNewTheme("NameTheme1","BodyTheme1");
         themePage.clickButtonAddSurvey();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         themePage.writeVoit("Голосование","answerQFirst","answerQSecond",2,2);
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         themePage.clickButtonSendMessageWithVoting();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         themePage.clickRandomCheckBox();
 
     }

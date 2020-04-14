@@ -26,7 +26,6 @@ public class StepsTestOpenProfile {
     public void getStatus(String nickName) throws InterruptedException {
         this.name = nickName;
         Assert.assertEquals(name, profilePage.getNickNameProfile());
-        Thread.sleep(1000);
         profilePage.closeWeb();
 
     }
