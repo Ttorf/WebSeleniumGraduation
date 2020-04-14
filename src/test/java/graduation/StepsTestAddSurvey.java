@@ -54,7 +54,6 @@ public class StepsTestAddSurvey {
         themePage.writeVoit(nameVoting, answerQFirst, answerQSecond, numberDays, allowedAnswerOptions);
         Thread.sleep(1000);
         themePage.clickButtonSendMessageWithVoting();
-
     }
 
     @Тогда("^пользователь видит сообщение \"(.*)\"$")

@@ -18,15 +18,14 @@ public class StepsTestChooseAnswer {
     @Когда("^пользователь выбрал первый ответ")
     public void chooseAnswer() throws InterruptedException {
         homePage.authorization(profilePage.getLogin(), profilePage.getPassword());
-        homePage.creatNewTheme("NameTheme1","BodyTheme1");
+        homePage.creatNewTheme("NameTheme1", "BodyTheme1");
         themePage.clickButtonAddSurvey();
         Thread.sleep(1000);
-        themePage.writeVoit("Голосование","answerQFirst","answerQSecond",2,2);
+        themePage.writeVoit("Голосование", "answerQFirst", "answerQSecond", 2, 2);
         Thread.sleep(1000);
         themePage.clickButtonSendMessageWithVoting();
         Thread.sleep(1000);
         themePage.clickRandomCheckBox();
-
     }
 
     @Когда("^пользователь сохранил результат")
@@ -34,7 +33,6 @@ public class StepsTestChooseAnswer {
         Thread.sleep(1000);
         themePage.clickButtonSaveYourAnswer();
     }
-
 
     @Тогда("^пользователь видит сообщение об удачном голосовании \"(.*)\"$")
     public void viewAlert(String alert) throws InterruptedException {

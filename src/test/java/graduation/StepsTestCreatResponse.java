@@ -18,7 +18,6 @@ public class StepsTestCreatResponse {
     @Дано("^у пользователя есть тело ответа для темы \"(.*)\"$")
     public void nameBodyResponse(String stringBody) {
         this.bodyResponseTheme = stringBody;
-
     }
 
     @Когда("^пользователь отправляет ответ$")

@@ -14,19 +14,18 @@ public class StepsTestChangeNameTheme {
     HomePage homePage = new HomePage(SettingWebDriver.setUp());
     ThemePage themePage = new ThemePage(homePage.getWebDriver());
     ProfilePage profilePage = new ProfilePage(homePage.getWebDriver());
+
     @Дано("^у пользователя есть новое наименование темы обсуждения \"(.*)\"$")
     public void newNameTheme(String nameTheme) {
         this.newNameTheme = nameTheme;
-
     }
 
     @Когда("^пользователь  изменяет название темы$")
     public void changeNameTheme() throws InterruptedException {
         homePage.authorization(profilePage.getLogin(), profilePage.getPassword());
-        homePage.creatNewTheme("NameTheme1","BodyTheme1");
+        homePage.creatNewTheme("NameTheme1", "BodyTheme1");
         themePage.clickButtonChangeNameTheme();
         Thread.sleep(1000);
-
     }
 
     @Тогда("^пользователь видит форму для изменения темы$")

@@ -23,8 +23,6 @@ public class StepsTestSubscribeToTopic {
         Thread.sleep(2000);
         themePage.clickAstivSubscribeStatus();
         Thread.sleep(1000);
-
-
     }
 
     @Тогда("^пользователь видит \"(.*)\"$")

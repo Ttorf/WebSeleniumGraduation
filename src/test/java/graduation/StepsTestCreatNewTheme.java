@@ -18,13 +18,11 @@ public class StepsTestCreatNewTheme {
     @Дано("^у пользователя есть название темы \"(.*)\"$")
     public void nameTheme(String stringName) {
         this.nameTheme = stringName;
-
     }
 
     @Дано("^у пользователя есть тело темы \"(.*)\"$")
     public void nameBody(String stringBody) {
         this.bodyTheme = stringBody;
-
     }
 
     @Когда("^пользователь заполняет и создаёт тему$")

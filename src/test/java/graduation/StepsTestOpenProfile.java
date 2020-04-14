@@ -19,7 +19,6 @@ public class StepsTestOpenProfile {
         Thread.sleep(1000);
         homePage.clickOpenProfile();
         Thread.sleep(1000);
-
     }
 
     @Тогда("^пользователь видит свой ник \"(.*)\"$")
@@ -27,6 +26,5 @@ public class StepsTestOpenProfile {
         this.name = nickName;
         Assert.assertEquals(name, profilePage.getNickNameProfile());
         profilePage.closeWeb();
-
     }
 }
