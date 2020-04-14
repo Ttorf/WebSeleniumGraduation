@@ -10,7 +10,7 @@ public class HomePage {
     private By buttonEnterLogin = By.xpath("//button[@type='submit']");
     private By loginInput = By.id("id_username");
     private By passwordInput = By.id("id_password");
-    private By allert = By.xpath("//p[@class='alert alert-danger']");
+    private By alert = By.xpath("//p[@class='alert alert-danger']");
     private By buttonNewTheme = By.xpath("//button[contains(@class,'btn btn-primary')]");
     private By headTheme = By.xpath("//input[@placeholder='Заголовок темы']");
     private By bodyTheme = By.xpath("//textarea[@class='form-control']");
@@ -35,7 +35,7 @@ public class HomePage {
         return this;
     }
 
-    public HomePage openAuthorizationPanel() throws InterruptedException {
+    public HomePage openAuthorizationPanel() {
         WebElement element = webDriver.findElement(buttonAuthorization);
         element.click();
         return this;
@@ -54,7 +54,7 @@ public class HomePage {
     }
 
 
-    public boolean newThemeIsDisplayed() throws InterruptedException {
+    public boolean newThemeIsDisplayed() {
         WebElement element = webDriver.findElement(buttonNewTheme);
         return element.isDisplayed();
     }
@@ -65,25 +65,25 @@ public class HomePage {
         return this;
     }
 
-    public HomePage clickNewTheme() throws InterruptedException {
+    public HomePage clickNewTheme() {
         WebElement element = webDriver.findElement(buttonNewTheme);
         element.click();
         return this;
     }
 
-    public HomePage clickButtonEnterLogin() throws InterruptedException {
+    public HomePage clickButtonEnterLogin() {
         WebElement element = webDriver.findElement(buttonEnterLogin);
         element.click();
         return this;
     }
 
-    private HomePage sendKeysLogin(String login) throws InterruptedException {
+    private HomePage sendKeysLogin(String login) {
         WebElement element = webDriver.findElement(loginInput);
         element.sendKeys(login);
         return this;
     }
 
-    private HomePage sendKeysPass(String password) throws InterruptedException {
+    private HomePage sendKeysPass(String password) {
         WebElement element = webDriver.findElement(passwordInput);
         element.sendKeys(password);
         return this;
@@ -105,17 +105,17 @@ public class HomePage {
     }
 
     public String getAlert() {
-        WebElement element = webDriver.findElement(allert);
+        WebElement element = webDriver.findElement(alert);
         return element.getText();
     }
 
-    private HomePage sendKeysNameTheme(String stringNameTheme) throws InterruptedException {
+    private HomePage sendKeysNameTheme(String stringNameTheme) {
         WebElement element = webDriver.findElement(headTheme);
         element.sendKeys(stringNameTheme);
         return this;
     }
 
-    private HomePage sendKeysBodyTheme(String stringBodyTheme) throws InterruptedException {
+    private HomePage sendKeysBodyTheme(String stringBodyTheme) {
         WebElement element = webDriver.findElement(bodyTheme);
         element.sendKeys(stringBodyTheme);
         return this;

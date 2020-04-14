@@ -25,7 +25,7 @@ public class ThemePage {
     private By fieldNumberOfOptions = By.xpath("(//input[@class='form-control'])[4]");
     private By alertSuccess = By.xpath("//p[@class='alert alert-success']");
     private By checksBoxAnswer = By.xpath("//button[@class='btn']//span");
-    private By activSubscribeStatus = By.xpath("(//ul[contains(@class,'dropdown-menu dropdown-menu-right')]//button)[2]");
+    private By activeSubscribeStatus = By.xpath("(//ul[contains(@class,'dropdown-menu dropdown-menu-right')]//button)[2]");
     private By dropDownMenu = By.xpath("(//button[@data-toggle='dropdown'])[2]");
 
     public ThemePage(WebDriver webDriver) {
@@ -38,7 +38,7 @@ public class ThemePage {
     }
 
     public ThemePage clickAstivSubscribeStatus() {
-        WebElement webElement = webDriver.findElement(activSubscribeStatus);
+        WebElement webElement = webDriver.findElement(activeSubscribeStatus);
         webElement.click();
         return this;
     }

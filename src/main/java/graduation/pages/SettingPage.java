@@ -8,7 +8,7 @@ public class SettingPage {
     private By editDetails = By.xpath("(//a[@href='/options/edit-details/'])[1]");
     private By fieldRealName = By.xpath("(//input[@class='form-control'])[2]");
     private By buttonSaveChanges = By.xpath("//button[@type='submit']");
-    private By allertUpdate = By.xpath("//p[text()='Личные данные обновлены.']");
+    private By alertUpdate = By.xpath("//p[text()='Личные данные обновлены.']");
 
     private WebDriver webDriver;
 
@@ -16,8 +16,8 @@ public class SettingPage {
         this.webDriver = webDriver;
     }
 
-    public String allertgetText(){
-        WebElement webElement = webDriver.findElement(allertUpdate);
+    public String alertGetText(){
+        WebElement webElement = webDriver.findElement(alertUpdate);
        return webElement.getText();
     }
 
