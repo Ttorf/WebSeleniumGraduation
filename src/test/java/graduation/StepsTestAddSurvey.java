@@ -19,10 +19,10 @@ public class StepsTestAddSurvey {
     HomePage homePage = new HomePage(SettingWebDriver.setUp());
     ThemePage themePage = new ThemePage(homePage.getWebDriver());
     ProfilePage profilePage = new ProfilePage(homePage.getWebDriver());
+
     @Дано("^у пользователя есть наименование вопроса голосования \"(.*)\"$")
     public void nameVotingTheme(String nameVot) {
         this.nameVoting = nameVot;
-
     }
 
     @Дано("^у пользователя есть длительность голосования в днях (\\d+)$")
@@ -48,19 +48,18 @@ public class StepsTestAddSurvey {
     @Когда("^пользователь заполняет форму и отправляет сообщение с голосованием$")
     public void sendingAVotingMessage() throws InterruptedException {
         homePage.authorization(profilePage.getLogin(), profilePage.getPassword());
-        homePage.creatNewTheme("NameTheme1","BodyTheme1");
+        homePage.creatNewTheme("NameTheme1", "BodyTheme1");
         themePage.clickButtonAddSurvey();
         Thread.sleep(2000);
-        themePage.writeVoit(nameVoting,answerQFirst,answerQSecond,numberDays,allowedAnswerOptions);
+        themePage.writeVoit(nameVoting, answerQFirst, answerQSecond, numberDays, allowedAnswerOptions);
         Thread.sleep(2000);
         themePage.clickButtonSendMessageWithVoting();
 
     }
 
     @Тогда("^пользователь видит сообщение \"(.*)\"$")
-    public void viewAlertSuccess(String alert) throws InterruptedException {
+    public void viewAlertSuccess(String alert) {
         this.alert = alert;
-        Thread.sleep(2000);
         Assert.assertEquals(true, themePage.buttonSaveChangeThemeNameIsDisplayed());
         themePage.closeWeb();
     }

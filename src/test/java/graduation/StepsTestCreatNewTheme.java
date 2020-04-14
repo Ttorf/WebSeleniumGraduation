@@ -31,14 +31,14 @@ public class StepsTestCreatNewTheme {
     public void writeAll() throws InterruptedException {
         homePage.authorization(profilePage.getLogin(), profilePage.getPassword());
         homePage.clickNewTheme();
-        Thread.sleep(3000);
+        Thread.sleep(2000);
         homePage.writeNewTheme(nameTheme, bodyTheme);
         homePage.clickCreatTheme();
     }
 
     @Тогда("^пользователь переходит на страницу созданной темы$")
     public void getNameThemeOnNewPage() throws InterruptedException { ;
-        Thread.sleep(6000);
+        Thread.sleep(3000);
         Assert.assertEquals(bodyTheme, themePage.bodyTheme());
         themePage.closeWeb();
     }

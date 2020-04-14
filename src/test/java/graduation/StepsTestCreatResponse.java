@@ -26,16 +26,15 @@ public class StepsTestCreatResponse {
         homePage.authorization(profilePage.getLogin(), profilePage.getPassword());
         homePage.creatNewTheme("NameTheme1","BodyTheme1");
         themePage.clickButtonReply();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         themePage.sendKeyRespons(bodyResponseTheme);
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         themePage.clickButtonSendResponse();
         Thread.sleep(2000);
     }
 
     @Тогда("^пользователь видит свой ответ в данной теме обсуждения$")
-    public void getNewRespons() throws InterruptedException {
-        Thread.sleep(2000);
+    public void getNewRespons() {
         Assert.assertEquals(bodyResponseTheme, themePage.getMyLastRespons());
         themePage.closeWeb();
     }

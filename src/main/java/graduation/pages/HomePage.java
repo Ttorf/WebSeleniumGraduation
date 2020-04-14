@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 
 public class HomePage {
     private By buttonAuthorization = By.xpath("//button[text() = 'Войти']");
-    private By buttonEnterLogin = By.xpath("//*[@id=\"modal-mount\"]/div/div/form/div[2]/button");
+    private By buttonEnterLogin = By.xpath("//button[@type='submit']");
     private By loginInput = By.id("id_username");
     private By passwordInput = By.id("id_password");
     private By allert = By.xpath("//p[@class='alert alert-danger']");

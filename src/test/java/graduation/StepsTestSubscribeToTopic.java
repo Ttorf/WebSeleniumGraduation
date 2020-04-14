@@ -27,7 +27,7 @@ public class StepsTestSubscribeToTopic {
     }
 
     @Тогда("^пользователь видит \"(.*)\"$")
-    public void getStatus(String statusNow) throws InterruptedException {
+    public void getStatus(String statusNow) {
         this.status = statusNow;
         Assert.assertEquals(status, themePage.dropDownMenuStatusGetText());
         themePage.closeWeb();

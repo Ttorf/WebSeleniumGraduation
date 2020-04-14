@@ -16,17 +16,17 @@ public class StepsTestAuthorization {
     HomePage homePage = new HomePage(SettingWebDriver.setUp());
 
     @Дано("^пользователь имеет логин \"(.*)\"$")
-    public void giveLogin(String string) throws InterruptedException {
+    public void giveLogin(String string) {
         this.login = string;
     }
 
     @Дано("^пользователь имеет пароль \"(.*)\"$")
-    public void givePass(String string) throws InterruptedException {
+    public void givePass(String string) {
         this.pass = string;
     }
 
     @Когда("^пользователь авторизуется$")
-    public void autoriz() throws InterruptedException {
+    public void authorize() throws InterruptedException {
         homePage.authorization(login, pass);
         Thread.sleep(1000);
     }
@@ -34,8 +34,8 @@ public class StepsTestAuthorization {
     @Тогда("^пользователь получает сообщение \"(.*)\"$")
     public void getAlert(String string) throws InterruptedException {
         this.message = string;
-        String excected = homePage.getAlert();
-        Assert.assertEquals(excected, message);
+        String excepted = homePage.getAlert();
+        Assert.assertEquals(excepted, message);
         Thread.sleep(2000);
         homePage.closeWeb();
     }

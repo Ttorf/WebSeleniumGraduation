@@ -31,7 +31,7 @@ public class StepsTestChooseAnswer {
 
     @Когда("^пользователь сохранил результат")
     public void saveResult() throws InterruptedException {
-        Thread.sleep(3000);
+        Thread.sleep(1000);
         themePage.clickButtonSaveYourAnswer();
     }
 
@@ -39,7 +39,7 @@ public class StepsTestChooseAnswer {
     @Тогда("^пользователь видит сообщение об удачном голосовании \"(.*)\"$")
     public void viewAlert(String alert) throws InterruptedException {
         this.alert = alert;
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         Assert.assertEquals(true, themePage.alertSuccessMessage());
         themePage.closeWeb();
     }
