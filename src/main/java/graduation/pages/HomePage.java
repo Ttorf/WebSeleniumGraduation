@@ -97,7 +97,7 @@ public class HomePage {
     }
 
     public void authorization(String login, String password) throws InterruptedException {
-        webDriver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+        webDriver.manage().window().maximize();
         webDriver.get("https://dev.n7lanit.ru/");
         openAuthorizationPanel();
         Thread.sleep(2000);
