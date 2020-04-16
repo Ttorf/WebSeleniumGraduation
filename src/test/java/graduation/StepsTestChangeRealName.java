@@ -25,6 +25,7 @@ public class StepsTestChangeRealName {
     public void openSettingPage() throws InterruptedException {
         homePage.authorization(profilePage.getLogin(), profilePage.getPassword());
         homePage.clickUserAvatar();
+        Thread.sleep(1000);
         homePage.openSetting();
         Thread.sleep(1000);
     }
