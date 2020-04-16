@@ -5,8 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class SettingPage {
-    private By editDetails = By.xpath("(//a[@href='/options/edit-details/'])[1]");
-    private By editDetailsV2 = By.xpath("(//a[@class='list-group-item'])[1]");
+    private By editDetailsWithWindowMaximize = By.xpath("(//a[@class='list-group-item'])[1]");
     private By fieldRealName = By.xpath("(//input[@class='form-control'])[2]");
     private By buttonSaveChanges = By.xpath("//button[@type='submit']");
     private By alertUpdate = By.xpath("//p[text()='Личные данные обновлены.']");
@@ -17,9 +16,9 @@ public class SettingPage {
         this.webDriver = webDriver;
     }
 
-    public String alertGetText(){
+    public String alertGetText() {
         WebElement webElement = webDriver.findElement(alertUpdate);
-       return webElement.getText();
+        return webElement.getText();
     }
 
     public SettingPage closeWeb() {
@@ -34,7 +33,7 @@ public class SettingPage {
     }
 
     public SettingPage clickEditDetails() {
-        WebElement webElement = webDriver.findElement(editDetailsV2);
+        WebElement webElement = webDriver.findElement(editDetailsWithWindowMaximize);
         webElement.click();
         return this;
     }
