@@ -43,7 +43,7 @@ public class StepsTestChangeRealName {
     @Тогда("^пользователь видит всплывающее сообщение \"(.*)\"$")
     public void getStatus(String alert) throws InterruptedException {
         this.alertSuccess = alert;
-        Assert.assertEquals(settingPage.alertGetText(), alertSuccess);
+        Assert.assertEquals(alertSuccess,settingPage.alertGetText());
         Thread.sleep(1000);
         settingPage.closeWeb();
     }

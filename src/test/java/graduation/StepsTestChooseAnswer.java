@@ -38,8 +38,8 @@ public class StepsTestChooseAnswer {
     public void viewAlert(String alert) throws InterruptedException {
         this.alert = alert;
         Thread.sleep(1000);
-        Assert.assertEquals("Ваш голос был сохранен", this.alert);
-        Assert.assertEquals(true, themePage.alertSuccessMessage());
+        Assert.assertEquals(this.alert,themePage.alertSuccessMessage().getText());
+        Assert.assertEquals(true, themePage.alertSuccessMessage().isDisplayed());
         themePage.closeWeb();
     }
 }

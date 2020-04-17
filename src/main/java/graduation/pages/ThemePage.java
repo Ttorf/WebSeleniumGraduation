@@ -70,9 +70,9 @@ public class ThemePage {
     }
 
 
-    public boolean alertSuccessMessage() {
+    public WebElement alertSuccessMessage() {
         WebElement webElement = webDriver.findElement(alertSuccess);
-        return webElement.isDisplayed();
+        return webElement;
 
     }
 
