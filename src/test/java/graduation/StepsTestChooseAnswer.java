@@ -9,10 +9,10 @@ import org.junit.Assert;
 import graduation.settings.SettingWebDriver;
 
 public class StepsTestChooseAnswer {
-    String alert;
-    HomePage homePage = new HomePage(SettingWebDriver.setUp());
-    ThemePage themePage = new ThemePage(homePage.getWebDriver());
-    ProfilePage profilePage = new ProfilePage(homePage.getWebDriver());
+    private String alert;
+    private HomePage homePage = new HomePage(SettingWebDriver.setUp());
+    private ThemePage themePage = new ThemePage(homePage.getWebDriver());
+    private ProfilePage profilePage = new ProfilePage(homePage.getWebDriver());
 
 
     @Когда("^пользователь выбрал первый ответ")
@@ -38,6 +38,7 @@ public class StepsTestChooseAnswer {
     public void viewAlert(String alert) throws InterruptedException {
         this.alert = alert;
         Thread.sleep(1000);
+        Assert.assertEquals("Ваш голос был сохранен", this.alert);
         Assert.assertEquals(true, themePage.alertSuccessMessage());
         themePage.closeWeb();
     }

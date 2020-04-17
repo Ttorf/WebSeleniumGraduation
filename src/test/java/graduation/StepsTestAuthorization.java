@@ -8,11 +8,11 @@ import org.junit.Assert;
 import graduation.settings.SettingWebDriver;
 
 public class StepsTestAuthorization {
-    String login;
-    String pass;
-    String message;
+    private String login;
+    private String pass;
+    private String message;
 
-    HomePage homePage = new HomePage(SettingWebDriver.setUp());
+    private HomePage homePage = new HomePage(SettingWebDriver.setUp());
 
     @Дано("^пользователь имеет логин \"(.*)\"$")
     public void giveLogin(String string) {
@@ -40,7 +40,7 @@ public class StepsTestAuthorization {
     }
 
     @Тогда("^пользователь получит доступ к сайту$")
-    public void getAccess() throws InterruptedException {
+    public void getAccess() {
         Assert.assertEquals(true, homePage.newThemeIsDisplayed());
         homePage.closeWeb();
     }

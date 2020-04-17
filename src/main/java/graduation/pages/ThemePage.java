@@ -12,7 +12,7 @@ public class ThemePage {
     private By buttonReply = By.xpath("(//button[contains(@class,'btn btn-primary')])[1]");
     private By buttonSubmit = By.xpath("//button[@type='submit']");
     private By fieldResponse = By.xpath("//textarea[@class='form-control']");
-    private By fieldSendedRespons = By.xpath("//article[@class='misago-markup']//p");
+    private By fieldSendResponse = By.xpath("//article[@class='misago-markup']//p");
     private By buttonChangeNameTheme = By.xpath("//button[@title='Изменить название']");
     private By fieldNameTheme = By.xpath("(//input[@class='form-control'])[2]");
     private By buttonSaveChangeThemeName = By.xpath("//button[@title='Изменить название']");
@@ -189,7 +189,7 @@ public class ThemePage {
     }
 
     public String getMyLastRespons() {
-        List<WebElement> webElementList = webDriver.findElements(fieldSendedRespons);
+        List<WebElement> webElementList = webDriver.findElements(fieldSendResponse);
         return webElementList.get(webElementList.size() - 1).getText();
     }
 }

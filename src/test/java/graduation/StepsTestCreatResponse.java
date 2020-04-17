@@ -10,10 +10,10 @@ import org.junit.Assert;
 import graduation.settings.SettingWebDriver;
 
 public class StepsTestCreatResponse {
-    String bodyResponseTheme;
-    HomePage homePage = new HomePage(SettingWebDriver.setUp());
-    ThemePage themePage = new ThemePage(homePage.getWebDriver());
-    ProfilePage profilePage = new ProfilePage(homePage.getWebDriver());
+    private String bodyResponseTheme;
+    private HomePage homePage = new HomePage(SettingWebDriver.setUp());
+    private ThemePage themePage = new ThemePage(homePage.getWebDriver());
+    private ProfilePage profilePage = new ProfilePage(homePage.getWebDriver());
 
     @Дано("^у пользователя есть тело ответа для темы \"(.*)\"$")
     public void nameBodyResponse(String stringBody) {
@@ -23,7 +23,7 @@ public class StepsTestCreatResponse {
     @Когда("^пользователь отправляет ответ$")
     public void sendRespons() throws InterruptedException {
         homePage.authorization(profilePage.getLogin(), profilePage.getPassword());
-        homePage.creatNewTheme("NameTheme1","BodyTheme1");
+        homePage.creatNewTheme("NameTheme1", "BodyTheme1");
         themePage.clickButtonReply();
         Thread.sleep(1000);
         themePage.sendKeyRespons(bodyResponseTheme);

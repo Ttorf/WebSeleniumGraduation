@@ -10,15 +10,15 @@ import org.junit.Assert;
 import graduation.settings.SettingWebDriver;
 
 public class StepsTestAddSurvey {
-    String nameVoting;
-    int numberDays;
-    int allowedAnswerOptions;
-    String answerQFirst;
-    String answerQSecond;
-    String alert;
-    HomePage homePage = new HomePage(SettingWebDriver.setUp());
-    ThemePage themePage = new ThemePage(homePage.getWebDriver());
-    ProfilePage profilePage = new ProfilePage(homePage.getWebDriver());
+    private String nameVoting;
+    private int numberDays;
+    private int allowedAnswerOptions;
+    private String answerQFirst;
+    private String answerQSecond;
+    private String alert;
+    private HomePage homePage = new HomePage(SettingWebDriver.setUp());
+    private ThemePage themePage = new ThemePage(homePage.getWebDriver());
+    private ProfilePage profilePage = new ProfilePage(homePage.getWebDriver());
 
     @Дано("^у пользователя есть наименование вопроса голосования \"(.*)\"$")
     public void nameVotingTheme(String nameVot) {
@@ -59,6 +59,7 @@ public class StepsTestAddSurvey {
     @Тогда("^пользователь видит сообщение \"(.*)\"$")
     public void viewAlertSuccess(String alert) {
         this.alert = alert;
+        Assert.assertEquals("Голосование было опубликовано.",this.alert);
         Assert.assertEquals(true, themePage.buttonSaveChangeThemeNameIsDisplayed());
         themePage.closeWeb();
     }

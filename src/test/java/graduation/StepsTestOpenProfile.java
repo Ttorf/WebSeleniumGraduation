@@ -8,9 +8,9 @@ import org.junit.Assert;
 import graduation.settings.SettingWebDriver;
 
 public class StepsTestOpenProfile {
-    HomePage homePage = new HomePage(SettingWebDriver.setUp());
-    ProfilePage profilePage = new ProfilePage(homePage.getWebDriver());
-    String name;
+    private HomePage homePage = new HomePage(SettingWebDriver.setUp());
+    private ProfilePage profilePage = new ProfilePage(homePage.getWebDriver());
+    private String name;
 
     @Когда("^пользователь открывает профиль$")
     public void subscribe() throws InterruptedException {

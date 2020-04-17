@@ -10,11 +10,11 @@ import org.junit.Assert;
 import graduation.settings.SettingWebDriver;
 
 public class StepsTestChangeRealName {
-    HomePage homePage = new HomePage(SettingWebDriver.setUp());
-    ProfilePage profilePage = new ProfilePage(homePage.getWebDriver());
-    SettingPage settingPage = new SettingPage(homePage.getWebDriver());
-    String alertSuccess;
-    String name;
+    private HomePage homePage = new HomePage(SettingWebDriver.setUp());
+    private ProfilePage profilePage = new ProfilePage(homePage.getWebDriver());
+    private SettingPage settingPage = new SettingPage(homePage.getWebDriver());
+    private String alertSuccess;
+    private String name;
 
     @Дано("^пользователь имеет имя \"(.*)\"$")
     public void realName(String nameReal) {
@@ -43,7 +43,7 @@ public class StepsTestChangeRealName {
     @Тогда("^пользователь видит всплывающее сообщение \"(.*)\"$")
     public void getStatus(String alert) throws InterruptedException {
         this.alertSuccess = alert;
-        Assert.assertEquals(settingPage.alertGetText(), alert);
+        Assert.assertEquals(settingPage.alertGetText(), alertSuccess);
         Thread.sleep(1000);
         settingPage.closeWeb();
     }

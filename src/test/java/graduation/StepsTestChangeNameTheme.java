@@ -10,10 +10,10 @@ import org.junit.Assert;
 import graduation.settings.SettingWebDriver;
 
 public class StepsTestChangeNameTheme {
-    String newNameTheme;
-    HomePage homePage = new HomePage(SettingWebDriver.setUp());
-    ThemePage themePage = new ThemePage(homePage.getWebDriver());
-    ProfilePage profilePage = new ProfilePage(homePage.getWebDriver());
+    private String newNameTheme;
+    private HomePage homePage = new HomePage(SettingWebDriver.setUp());
+    private ThemePage themePage = new ThemePage(homePage.getWebDriver());
+    private ProfilePage profilePage = new ProfilePage(homePage.getWebDriver());
 
     @Дано("^у пользователя есть новое наименование темы обсуждения \"(.*)\"$")
     public void newNameTheme(String nameTheme) {

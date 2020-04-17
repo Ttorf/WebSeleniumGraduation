@@ -10,11 +10,12 @@ import org.junit.Assert;
 import graduation.settings.SettingWebDriver;
 
 public class StepsTestCreatNewTheme {
-    String nameTheme;
-    String bodyTheme;
-    HomePage homePage = new HomePage(SettingWebDriver.setUp());
-    ThemePage themePage = new ThemePage(homePage.getWebDriver());
-    ProfilePage profilePage = new ProfilePage(homePage.getWebDriver());
+    private String nameTheme;
+    private String bodyTheme;
+    private HomePage homePage = new HomePage(SettingWebDriver.setUp());
+    private ThemePage themePage = new ThemePage(homePage.getWebDriver());
+    private ProfilePage profilePage = new ProfilePage(homePage.getWebDriver());
+
     @Дано("^у пользователя есть название темы \"(.*)\"$")
     public void nameTheme(String stringName) {
         this.nameTheme = stringName;
@@ -36,7 +37,8 @@ public class StepsTestCreatNewTheme {
     }
 
     @Тогда("^пользователь переходит на страницу созданной темы$")
-    public void getNameThemeOnNewPage() { ;
+    public void getNameThemeOnNewPage() {
+        ;
         Assert.assertEquals(bodyTheme, themePage.bodyTheme());
         themePage.closeWeb();
     }

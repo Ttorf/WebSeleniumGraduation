@@ -9,10 +9,10 @@ import org.junit.Assert;
 import graduation.settings.SettingWebDriver;
 
 public class StepsTestSubscribeToTopic {
-    HomePage homePage = new HomePage(SettingWebDriver.setUp());
-    ThemePage themePage = new ThemePage(homePage.getWebDriver());
-    ProfilePage profilePage = new ProfilePage(homePage.getWebDriver());
-    String status;
+    private HomePage homePage = new HomePage(SettingWebDriver.setUp());
+    private ThemePage themePage = new ThemePage(homePage.getWebDriver());
+    private ProfilePage profilePage = new ProfilePage(homePage.getWebDriver());
+    private String status;
 
     @Когда("^пользователь подписывается на топик$")
     public void subscribe() throws InterruptedException {
