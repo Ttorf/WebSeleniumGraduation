@@ -22,7 +22,7 @@ public class StepsTestOpenProfile {
     }
 
     @Тогда("^пользователь видит свой ник \"(.*)\"$")
-    public void getStatus(String nickName) throws InterruptedException {
+    public void getStatus(String nickName) {
         this.name = nickName;
         Assert.assertEquals(name, profilePage.getNickNameProfile());
         profilePage.closeWeb();
