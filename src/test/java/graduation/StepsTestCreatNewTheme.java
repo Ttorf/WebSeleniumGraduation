@@ -38,7 +38,6 @@ public class StepsTestCreatNewTheme {
 
     @Тогда("^пользователь переходит на страницу созданной темы$")
     public void getNameThemeOnNewPage() {
-        ;
         Assert.assertEquals(bodyTheme, themePage.bodyTheme());
         themePage.closeWeb();
     }
