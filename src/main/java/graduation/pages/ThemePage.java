@@ -10,7 +10,7 @@ public class ThemePage {
     private By buttonReply = By.xpath("//button[text() = 'Ответить']");
     private By buttonSubmit = By.xpath("//button[@type='submit']");
     private By fieldResponse = By.xpath("//textarea[@class='form-control']");
-    private By fieldSendResponse = By.xpath("//li[@class='post'][last()]//p");
+    private By fieldSendResponse = By.xpath("(//article[@class='misago-markup']//p)[2]");
     private By buttonChangeNameTheme = By.xpath("//button[@title='Изменить название']");
     private By fieldNameTheme = By.xpath("(//input[@class='form-control'])[2]");
     private By buttonSaveChangeThemeName = By.xpath("//button[@title='Изменить название']");
@@ -25,18 +25,10 @@ public class ThemePage {
     private By checksBoxAnswer = By.xpath("//span[text()='check_box_outline_blank']");
     private By activeSubscribeStatus = By.xpath("(//ul[contains(@class,'dropdown-menu dropdown-menu-right')]//button)[2]");
     private By dropDownMenu = By.xpath("(//button[@data-toggle='dropdown'])[2]");
+    private By alertYouCantSendAnswersSoFastly = By.xpath("//p[text()='Вы не можете опубликовать сообщение так быстро после предыдущего.']");
 
     public ThemePage(WebDriver webDriver) {
         this.webDriver = webDriver;
-    }
-
-    private boolean isElementPresent(By by) {
-        try {
-            webDriver.findElement(by);
-            return true;
-        } catch (NoSuchElementException e) {
-            return false;
-        }
     }
 
     public String bodyTheme() {
@@ -182,10 +174,11 @@ public class ThemePage {
         return this;
     }
 
-    public ThemePage clickButtonSendResponse() {
+    public ThemePage clickButtonSendResponse() throws InterruptedException {
         WebElement element = webDriver.findElement(buttonSubmit);
         element.click();
-        while (isElementPresent(buttonSubmit)) {
+        if (webDriverWaitWebElement(alertYouCantSendAnswersSoFastly).isDisplayed()) {
+            Thread.sleep(3000);
             element.click();
         }
         return this;
@@ -197,7 +190,6 @@ public class ThemePage {
     }
 
     public boolean getMyLastRespons(String text) {
-
         return (new WebDriverWait(webDriver, 15)).
                 until(ExpectedConditions.textToBePresentInElementLocated(fieldSendResponse, text));
     }
@@ -209,7 +201,7 @@ public class ThemePage {
 
     public WebElement webDriverWaitWebElement(By webElement) {
         return (new WebDriverWait(webDriver, 15)).
-                until(ExpectedConditions.elementToBeClickable(webElement));
+                until(ExpectedConditions.visibilityOfElementLocated(webElement));
     }
 
     public WebElement webDriverWaitElement(WebElement webElement) {
