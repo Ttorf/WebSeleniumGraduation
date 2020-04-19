@@ -182,12 +182,11 @@ public class ThemePage {
         return this;
     }
 
-    public ThemePage clickButtonSendResponse() throws InterruptedException {
+    public ThemePage clickButtonSendResponse() {
         WebElement element = webDriver.findElement(buttonSubmit);
         element.click();
         while (isElementPresent(buttonSubmit)) {
             element.click();
-            Thread.sleep(1000);
         }
         return this;
     }
