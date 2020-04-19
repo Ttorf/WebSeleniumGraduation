@@ -3,16 +3,18 @@ package graduation.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
 public class ThemePage {
     private WebDriver webDriver;
     private By bodyTheme = By.xpath("//article[@class='misago-markup']//p[1]");
-    private By buttonReply = By.xpath("(//button[contains(@class,'btn btn-primary')])[1]");
+    private By buttonReply = By.xpath("//button[text() = 'Ответить']");
     private By buttonSubmit = By.xpath("//button[@type='submit']");
     private By fieldResponse = By.xpath("//textarea[@class='form-control']");
-    private By fieldSendResponse = By.xpath("//article[@class='misago-markup']//p");
+    private By fieldSendResponse = By.xpath("//li[@class='post'][last()]//p");
     private By buttonChangeNameTheme = By.xpath("//button[@title='Изменить название']");
     private By fieldNameTheme = By.xpath("(//input[@class='form-control'])[2]");
     private By buttonSaveChangeThemeName = By.xpath("//button[@title='Изменить название']");
@@ -23,8 +25,9 @@ public class ThemePage {
     private By filedAvailableOptions2 = By.xpath("(//input[@placeholder='выбрать метку'])[2]");
     private By fieldNumberDaysVoit = By.xpath("(//input[@class='form-control'])[3]");
     private By fieldNumberOfOptions = By.xpath("(//input[@class='form-control'])[4]");
-    private By alertSuccess = By.xpath("//p[@class='alert alert-success']");
-    private By checksBoxAnswer = By.xpath("//button[@class='btn']//span");
+    private By alertSuccess = By.xpath("//p[text()='Ваш голос был сохранен.']");
+    private By alertYouCantSendAnswersSoFastly = By.xpath("//p[text()='Вы не можете опубликовать сообщение так быстро после предыдущего.']");
+    private By checksBoxAnswer = By.xpath("//span[text()='check_box_outline_blank']");
     private By activeSubscribeStatus = By.xpath("(//ul[contains(@class,'dropdown-menu dropdown-menu-right')]//button)[2]");
     private By dropDownMenu = By.xpath("(//button[@data-toggle='dropdown'])[2]");
 
@@ -38,136 +41,132 @@ public class ThemePage {
     }
 
     public ThemePage clickAstivSubscribeStatus() {
-        WebElement webElement = webDriver.findElement(activeSubscribeStatus);
-        webElement.click();
+        WebElement element = webDriver.findElement(activeSubscribeStatus);
+        webDriverWaitTimerClick(element);
         return this;
     }
 
     public ThemePage clickDropDownMenu() {
-        WebElement webElement = webDriver.findElement(dropDownMenu);
-        webElement.click();
+        webDriverWaitWebElement(dropDownMenu).click();
         return this;
     }
 
     public String dropDownMenuStatusGetText() {
-        WebElement webElement = webDriver.findElement(dropDownMenu);
-        StringBuilder stb = new StringBuilder(webElement.getText());
+        WebElement element = webDriver.findElement(dropDownMenu);
+        StringBuilder stb = new StringBuilder(webDriverWaitElement(element).getText());
         stb.delete(0, 9);
         return String.valueOf(stb);
     }
 
     public ThemePage clickRandomCheckBox() {
-        List<WebElement> webElementList = webDriver.findElements(checksBoxAnswer);
-        WebElement webElement = webElementList.get((int) (Math.random() + webElementList.size() - 1));
-        webElement.click();
+        WebElement element = webDriver.findElement(checksBoxAnswer);
+        webDriverWaitElement(element).click();
         return this;
     }
 
     public ThemePage clickButtonSaveYourAnswer() {
-        WebElement webElement = webDriver.findElement(buttonSubmit);
-        webElement.click();
+        webDriverWaitWebElement(buttonSubmit).click();
         return this;
     }
 
 
     public WebElement alertSuccessMessage() {
-        WebElement webElement = webDriver.findElement(alertSuccess);
-        return webElement;
+        WebElement element = webDriver.findElement(alertSuccess);
+        return webDriverWaitElement(element);
+
 
     }
 
-    public void writeVoit(String nameVoting, String answerQFirst, String answerQSecond, int numberDays, int allowedAnswerOptions) throws InterruptedException {
+    public void writeVoit(String nameVoting, String answerQFirst, String answerQSecond, int numberDays, int allowedAnswerOptions) {
         sendKeyFieldQuestion(nameVoting);
         sendKeyfiledAvailableOptions1(answerQFirst);
         sendKeyfiledAvailableOptions2(answerQSecond);
         sendKeyfieldNumberDaysVoit(String.valueOf(numberDays));
         sendKeyfieldNumberOfOptions(String.valueOf(allowedAnswerOptions));
-        Thread.sleep(1000);
     }
 
     public ThemePage clickButtonSendMessageWithVoting() {
-        WebElement webElement = webDriver.findElement(buttonSubmit);
-        webElement.click();
+        WebElement element = webDriver.findElement(buttonSubmit);
+        webDriverWaitTimerClick(element);
         return this;
     }
 
     public ThemePage sendKeyfieldNumberOfOptions(String numberOfOptions) {
-        WebElement webElement = webDriver.findElement(fieldNumberOfOptions);
-        webElement.click();
-        webElement.clear();
-        webElement.sendKeys(numberOfOptions);
+        WebElement element = webDriver.findElement(fieldNumberOfOptions);
+        webDriverWaitTimerClick(element);
+        element.clear();
+        element.sendKeys(numberOfOptions);
         return this;
     }
 
     public ThemePage sendKeyfieldNumberDaysVoit(String numberDaysVoit) {
-        WebElement webElement = webDriver.findElement(fieldNumberDaysVoit);
-        webElement.click();
-        webElement.clear();
-        webElement.sendKeys(numberDaysVoit);
+        WebElement element = webDriver.findElement(fieldNumberDaysVoit);
+        webDriverWaitTimerClick(element);
+        element.clear();
+        element.sendKeys(numberDaysVoit);
         return this;
     }
 
     public ThemePage sendKeyfiledAvailableOptions2(String availableOptions2) {
-        WebElement webElement = webDriver.findElement(filedAvailableOptions2);
-        webElement.click();
-        webElement.sendKeys(availableOptions2);
+        WebElement element = webDriver.findElement(filedAvailableOptions2);
+        webDriverWaitTimerClick(element);
+        element.sendKeys(availableOptions2);
         return this;
     }
 
     public ThemePage sendKeyfiledAvailableOptions1(String availableOptions1) {
-        WebElement webElement = webDriver.findElement(filedAvailableOptions1);
-        webElement.click();
-        webElement.sendKeys(availableOptions1);
+        WebElement element = webDriver.findElement(filedAvailableOptions1);
+        webDriverWaitTimerClick(element);
+        element.sendKeys(availableOptions1);
         return this;
     }
 
     public ThemePage sendKeyFieldQuestion(String question) {
-        WebElement webElement = webDriver.findElement(fieldQuestion);
-        webElement.click();
-        webElement.sendKeys(question);
+        WebElement element = webDriver.findElement(fieldQuestion);
+        webDriverWaitTimerClick(element);
+        element.sendKeys(question);
         return this;
     }
 
     public ThemePage clickButtonAddSurvey() {
-        WebElement webElement = webDriver.findElement(buttonAddSurvey);
-        webElement.click();
+        WebElement element = webDriver.findElement(buttonAddSurvey);
+        webDriverWaitTimerClick(element);
         return this;
     }
 
     public boolean buttonSaveChangeThemeNameIsDisplayed() {
-        WebElement webElement = webDriver.findElement(buttonSaveChangeThemeName);
-        return webElement.isDisplayed();
+        WebElement element = webDriver.findElement(buttonSaveChangeThemeName);
+        return webDriverWaitElement(element).isDisplayed();
     }
 
     public String getNameTheme() {
-        WebElement webElement = webDriver.findElement(nameTheme);
-        return webElement.getText();
+        WebElement element = webDriver.findElement(nameTheme);
+        return webDriverWaitElement(element).getText();
 
     }
 
     public ThemePage clickButtonChangeNameTheme() {
-        WebElement webElement = webDriver.findElement(buttonChangeNameTheme);
-        webElement.click();
+        WebElement element = webDriver.findElement(buttonChangeNameTheme);
+        webDriverWaitTimerClick(element);
         return this;
     }
 
     public ThemePage clickButtonSaveChangeThemeName() {
-        WebElement webElement = webDriver.findElement(buttonSaveChangeThemeName);
-        webElement.click();
+        WebElement element = webDriver.findElement(buttonSaveChangeThemeName);
+        webDriverWaitTimerClick(element);
         return this;
     }
 
     public ThemePage sendKeyFieldNameTheme(String message) {
-        WebElement webElement = webDriver.findElement(fieldNameTheme);
-        webElement.click();
-        webElement.clear();
-        webElement.sendKeys(message);
+        WebElement element = webDriver.findElement(fieldNameTheme);
+        webDriverWaitTimerClick(element);
+        element.clear();
+        element.sendKeys(message);
         return this;
     }
 
     public ThemePage clickButtonReply() {
-        WebElement webElement = webDriver.findElement(buttonReply);
-        webElement.click();
+        webDriverWaitWebElement(buttonReply).click();
         return this;
     }
 
@@ -177,9 +176,13 @@ public class ThemePage {
         return this;
     }
 
-    public ThemePage clickButtonSendResponse() {
-        WebElement webElement = webDriver.findElement(buttonSubmit);
-        webElement.click();
+    public ThemePage clickButtonSendResponse() throws InterruptedException {
+        WebElement element = webDriver.findElement(buttonSubmit);
+        element.click();
+        if (webDriverWaitWebElement(alertYouCantSendAnswersSoFastly).isDisplayed()) {
+            Thread.sleep(3000);
+            element.click();
+        }
         return this;
     }
 
@@ -188,8 +191,26 @@ public class ThemePage {
         return this;
     }
 
-    public String getMyLastRespons() {
-        List<WebElement> webElementList = webDriver.findElements(fieldSendResponse);
-        return webElementList.get(webElementList.size() - 1).getText();
+    public boolean getMyLastRespons(String text) {
+
+        return (new WebDriverWait(webDriver, 15)).
+                until(ExpectedConditions.textToBePresentInElementLocated(fieldSendResponse, text));
     }
+
+    public void webDriverWaitTimerClick(WebElement webElement) {
+        (new WebDriverWait(webDriver, 15)).
+                until(ExpectedConditions.elementToBeClickable(webElement)).click();
+    }
+
+    public WebElement webDriverWaitWebElement(By webElement) {
+        return (new WebDriverWait(webDriver, 15)).
+                until(ExpectedConditions.elementToBeClickable(webElement));
+    }
+
+    public WebElement webDriverWaitElement(WebElement webElement) {
+        return (new WebDriverWait(webDriver, 15)).
+                until(ExpectedConditions.visibilityOf(webElement));
+    }
+
+
 }

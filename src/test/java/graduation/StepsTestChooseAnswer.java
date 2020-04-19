@@ -16,30 +16,24 @@ public class StepsTestChooseAnswer {
 
 
     @Когда("^пользователь выбрал первый ответ")
-    public void chooseAnswer() throws InterruptedException {
+    public void chooseAnswer()  {
         homePage.authorization(profilePage.getLogin(), profilePage.getPassword());
         homePage.creatNewTheme("NameTheme1", "BodyTheme1");
         themePage.clickButtonAddSurvey();
-        Thread.sleep(1000);
         themePage.writeVoit("Голосование", "answerQFirst", "answerQSecond", 2, 2);
-        Thread.sleep(1000);
         themePage.clickButtonSendMessageWithVoting();
-        Thread.sleep(1000);
         themePage.clickRandomCheckBox();
     }
 
     @Когда("^пользователь сохранил результат")
-    public void saveResult() throws InterruptedException {
-        Thread.sleep(1000);
+    public void saveResult()  {
         themePage.clickButtonSaveYourAnswer();
     }
 
     @Тогда("^пользователь видит сообщение об удачном голосовании \"(.*)\"$")
-    public void viewAlert(String alert) throws InterruptedException {
+    public void viewAlert(String alert)  {
         this.alert = alert;
-        Thread.sleep(1000);
         Assert.assertEquals(this.alert,themePage.alertSuccessMessage().getText());
-        Assert.assertEquals(true, themePage.alertSuccessMessage().isDisplayed());
         themePage.closeWeb();
     }
 }

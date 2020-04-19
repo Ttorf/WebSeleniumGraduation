@@ -15,14 +15,11 @@ public class StepsTestSubscribeToTopic {
     private String status;
 
     @Когда("^пользователь подписывается на топик$")
-    public void subscribe() throws InterruptedException {
+    public void subscribe()  {
         homePage.authorization(profilePage.getLogin(), profilePage.getPassword());
         homePage.creatNewTheme("NameTheme1", "BodyTheme1");
-        Thread.sleep(2000);
         themePage.clickDropDownMenu();
-        Thread.sleep(2000);
         themePage.clickAstivSubscribeStatus();
-        Thread.sleep(1000);
     }
 
     @Тогда("^пользователь видит \"(.*)\"$")

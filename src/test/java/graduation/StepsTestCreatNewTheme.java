@@ -27,13 +27,12 @@ public class StepsTestCreatNewTheme {
     }
 
     @Когда("^пользователь заполняет и создаёт тему$")
-    public void writeAll() throws InterruptedException {
+    public void writeAll()  {
         homePage.authorization(profilePage.getLogin(), profilePage.getPassword());
+
         homePage.clickNewTheme();
-        Thread.sleep(1000);
         homePage.writeNewTheme(nameTheme, bodyTheme);
         homePage.clickCreatTheme();
-        Thread.sleep(1000);
     }
 
     @Тогда("^пользователь переходит на страницу созданной темы$")

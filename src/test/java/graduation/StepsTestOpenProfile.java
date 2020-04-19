@@ -13,12 +13,10 @@ public class StepsTestOpenProfile {
     private String name;
 
     @Когда("^пользователь открывает профиль$")
-    public void subscribe() throws InterruptedException {
+    public void subscribe()  {
         homePage.authorization(profilePage.getLogin(), profilePage.getPassword());
         homePage.clickUserAvatar();
-        Thread.sleep(1000);
         homePage.clickOpenProfile();
-        Thread.sleep(1000);
     }
 
     @Тогда("^пользователь видит свой ник \"(.*)\"$")

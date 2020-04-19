@@ -25,12 +25,12 @@ public class StepsTestAuthorization {
     }
 
     @Когда("^пользователь авторизуется$")
-    public void authorize() throws InterruptedException {
+    public void authorize()  {
         homePage.authorization(login, pass);
     }
 
     @Тогда("^пользователь получает сообщение \"(.*)\"$")
-    public void getAlert(String string) throws InterruptedException {
+    public void getAlert(String string) {
         this.message = string;
         String excepted = homePage.getAlert();
         Assert.assertEquals(excepted, message);

@@ -25,16 +25,14 @@ public class StepsTestCreatResponse {
         homePage.authorization(profilePage.getLogin(), profilePage.getPassword());
         homePage.creatNewTheme("NameTheme1", "BodyTheme1");
         themePage.clickButtonReply();
-        Thread.sleep(1000);
         themePage.sendKeyRespons(bodyResponseTheme);
-        Thread.sleep(1000);
         themePage.clickButtonSendResponse();
-        Thread.sleep(1000);
+
     }
 
     @Тогда("^пользователь видит свой ответ в данной теме обсуждения$")
     public void getNewRespons() {
-        Assert.assertEquals(bodyResponseTheme, themePage.getMyLastRespons());
+        Assert.assertTrue(themePage.getMyLastRespons(bodyResponseTheme));
         themePage.closeWeb();
     }
 

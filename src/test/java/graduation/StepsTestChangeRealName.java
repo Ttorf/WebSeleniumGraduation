@@ -22,29 +22,24 @@ public class StepsTestChangeRealName {
     }
 
     @Когда("^пользователь открывает форму настроек$")
-    public void openSettingPage() throws InterruptedException {
+    public void openSettingPage()  {
         homePage.authorization(profilePage.getLogin(), profilePage.getPassword());
         homePage.clickUserAvatar();
-        Thread.sleep(1000);
         homePage.openSetting();
-        Thread.sleep(1000);
     }
 
     @Когда("^пользователь меняет реальное имя$")
-    public void changeRealName() throws InterruptedException {
+    public void changeRealName()  {
         settingPage.clickEditDetails();
-        Thread.sleep(1000);
         settingPage.sendKeyRealName(name);
         settingPage.clickButtonSaveChanges();
-        Thread.sleep(1000);
     }
 
 
     @Тогда("^пользователь видит всплывающее сообщение \"(.*)\"$")
-    public void getStatus(String alert) throws InterruptedException {
+    public void getStatus(String alert)  {
         this.alertSuccess = alert;
         Assert.assertEquals(alertSuccess,settingPage.alertGetText());
-        Thread.sleep(1000);
         settingPage.closeWeb();
     }
 }

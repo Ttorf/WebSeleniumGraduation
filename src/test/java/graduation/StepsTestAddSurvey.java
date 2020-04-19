@@ -46,20 +46,18 @@ public class StepsTestAddSurvey {
     }
 
     @Когда("^пользователь заполняет форму и отправляет сообщение с голосованием$")
-    public void sendingAVotingMessage() throws InterruptedException {
+    public void sendingAVotingMessage()  {
         homePage.authorization(profilePage.getLogin(), profilePage.getPassword());
         homePage.creatNewTheme("NameTheme1", "BodyTheme1");
         themePage.clickButtonAddSurvey();
-        Thread.sleep(1000);
         themePage.writeVoit(nameVoting, answerQFirst, answerQSecond, numberDays, allowedAnswerOptions);
-        Thread.sleep(1000);
         themePage.clickButtonSendMessageWithVoting();
     }
 
     @Тогда("^пользователь видит сообщение \"(.*)\"$")
     public void viewAlertSuccess(String alert) {
         this.alert = alert;
-        Assert.assertEquals("Голосование было опубликовано.",this.alert);
+        Assert.assertEquals("Голосование было опубликовано.", this.alert);
         Assert.assertEquals(true, themePage.buttonSaveChangeThemeNameIsDisplayed());
         themePage.closeWeb();
     }

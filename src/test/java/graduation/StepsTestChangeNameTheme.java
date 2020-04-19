@@ -21,11 +21,10 @@ public class StepsTestChangeNameTheme {
     }
 
     @Когда("^пользователь  изменяет название темы$")
-    public void changeNameTheme() throws InterruptedException {
+    public void changeNameTheme()  {
         homePage.authorization(profilePage.getLogin(), profilePage.getPassword());
         homePage.creatNewTheme("NameTheme1", "BodyTheme1");
         themePage.clickButtonChangeNameTheme();
-        Thread.sleep(1000);
     }
 
     @Тогда("^пользователь видит форму для изменения темы$")
@@ -34,11 +33,9 @@ public class StepsTestChangeNameTheme {
     }
 
     @Когда("^пользователь вводит новое название темы и сохраняет изменения$")
-    public void inputNameThemeAndSave() throws InterruptedException {
+    public void inputNameThemeAndSave()  {
         themePage.sendKeyFieldNameTheme(newNameTheme);
-        Thread.sleep(1000);
         themePage.clickButtonSaveChangeThemeName();
-        Thread.sleep(1000);
     }
 
     @Тогда("^пользователь видит новое наименование темы$")

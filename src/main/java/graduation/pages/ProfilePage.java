@@ -3,9 +3,11 @@ package graduation.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ProfilePage {
-    private final String login = "Torf";
+    private final String login = "Torf2";
     private final String password = "654321ss";
     private By nickNameProfile = By.tagName("h1");
 
@@ -17,7 +19,7 @@ public class ProfilePage {
 
     public String getNickNameProfile() {
         WebElement webElement = webDriver.findElement(nickNameProfile);
-        return webElement.getText();
+        return webDriverWaitTimerElement(webElement).getText();
     }
 
     public String getLogin() {
@@ -31,5 +33,10 @@ public class ProfilePage {
     public ProfilePage closeWeb() {
         webDriver.close();
         return this;
+    }
+
+    public WebElement webDriverWaitTimerElement(WebElement webElement) {
+        return (new WebDriverWait(webDriver, 15)).
+                until(ExpectedConditions.visibilityOf(webElement));
     }
 }

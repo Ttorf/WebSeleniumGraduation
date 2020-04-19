@@ -15,13 +15,13 @@ public class HomePage {
     private By loginInput = By.id("id_username");
     private By passwordInput = By.id("id_password");
     private By alert = By.xpath("//p[@class='alert alert-danger']");
-    private By buttonNewTheme = By.xpath("//button[contains(@class,'btn btn-primary')]");
     private By headTheme = By.xpath("//input[@placeholder='Заголовок темы']");
     private By bodyTheme = By.xpath("//textarea[@class='form-control']");
     private By buttonCreatTheme = By.xpath("//button[text()='Опубликовать тему']");
     private By userAvatar = By.xpath("(//a[@data-toggle='dropdown'])[2]");
     private By openProfile = By.xpath("(//ul[@role='menu']//a)[1]");
     private By openSetting = By.xpath("//a[@href='/options/']");
+    private By buttonNewTheme = By.xpath("//button[text() = 'Новая тема']");
 
     private WebDriver webDriver;
 
@@ -34,28 +34,27 @@ public class HomePage {
     }
 
     public HomePage openSetting() {
-        WebElement webElement = webDriver.findElement(openSetting);
-        webElement.click();
+        WebElement element = webDriver.findElement(openSetting);
+        webDriverWaitTimerClick(element);
         return this;
     }
-    //todo
+
     public HomePage openAuthorizationPanel() {
         WebElement element = webDriver.findElement(buttonAuthorization);
-        (new WebDriverWait(webDriver, 10)).
-                until(ExpectedConditions.elementToBeClickable(element)).click();
+        webDriverWaitTimerClick(element);
 
         return this;
     }
 
     public HomePage clickUserAvatar() {
-        WebElement webElement = webDriver.findElement(userAvatar);
-        webElement.click();
+        WebElement element = webDriver.findElement(userAvatar);
+        webDriverWaitTimerClick(element);
         return this;
     }
 
     public HomePage clickOpenProfile() {
-        WebElement webElement = webDriver.findElement(openProfile);
-        webElement.click();
+        WebElement element = webDriver.findElement(openProfile);
+        webDriverWaitTimerClick(element);
         return this;
     }
 
@@ -66,25 +65,22 @@ public class HomePage {
     }
 
     public HomePage clickCreatTheme() {
-        WebElement element = webDriver.findElement(buttonCreatTheme);
-        element.click();
+        webDriverWaitElementClick(buttonCreatTheme);
         return this;
     }
 
     public HomePage clickNewTheme() {
         WebElement element = webDriver.findElement(buttonNewTheme);
-        element.click();
+        webDriverWaitTimerClick(element);
         return this;
     }
-    //todo
+
     public HomePage clickButtonEnterLogin() {
         WebElement element = webDriver.findElement(buttonEnterLogin);
-        (new WebDriverWait(webDriver, 10)).
-                until(ExpectedConditions.elementToBeClickable(element)).click();
-
+        webDriverWaitTimerClick(element);
         return this;
     }
-    //todo
+
     private HomePage sendKeysLogin(String login) {
         WebElement element = webDriver.findElement(loginInput);
         element.sendKeys(login);
@@ -103,9 +99,9 @@ public class HomePage {
     }
 
 
-
-    public void authorization(String login, String password) throws InterruptedException {
+    public void authorization(String login, String password)  {
         webDriver.manage().window().maximize();
+        webDriver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         webDriver.get("https://dev.n7lanit.ru/");
         openAuthorizationPanel();
         sendKeysLogin(login);
@@ -115,7 +111,7 @@ public class HomePage {
 
     public String getAlert() {
         WebElement element = webDriver.findElement(alert);
-        return element.getText();
+        return webDriverWaitTimerGetText(element).getText();
     }
 
     private HomePage sendKeysNameTheme(String stringNameTheme) {
@@ -131,18 +127,32 @@ public class HomePage {
     }
 
 
-    public void writeNewTheme(String nameTheme, String bodyTheme) throws InterruptedException {
+    public void writeNewTheme(String nameTheme, String bodyTheme)  {
         sendKeysNameTheme(nameTheme);
         sendKeysBodyTheme(bodyTheme);
-        Thread.sleep(3000);
+
     }
 
-    public void creatNewTheme(String nameTheme, String bodyTheme) throws InterruptedException {
-        Thread.sleep(4000);
+    public void creatNewTheme(String nameTheme, String bodyTheme)  {
         clickNewTheme();
-        Thread.sleep(3000);
         writeNewTheme(nameTheme, bodyTheme);
         clickCreatTheme();
-        Thread.sleep(4000);
     }
+
+    public void webDriverWaitTimerClick(WebElement webElement) {
+        (new WebDriverWait(webDriver, 15)).
+                until(ExpectedConditions.elementToBeClickable(webElement)).click();
+    }
+
+
+    public WebElement webDriverWaitTimerGetText(WebElement webElement) {
+        return (new WebDriverWait(webDriver, 15)).
+                until(ExpectedConditions.visibilityOf(webElement));
+    }
+
+    public void webDriverWaitElementClick(By xp) {
+        (new WebDriverWait(webDriver, 15)).
+                until(ExpectedConditions.elementToBeClickable(xp)).submit();
+    }
+
 }

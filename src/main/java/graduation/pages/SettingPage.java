@@ -3,6 +3,8 @@ package graduation.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class SettingPage {
     private By editDetailsWithWindowMaximize = By.xpath("(//a[@class='list-group-item'])[1]");
@@ -18,7 +20,7 @@ public class SettingPage {
 
     public String alertGetText() {
         WebElement webElement = webDriver.findElement(alertUpdate);
-        return webElement.getText();
+        return webDriverWaitElement(webElement).getText();
     }
 
     public SettingPage closeWeb() {
@@ -28,13 +30,13 @@ public class SettingPage {
 
     public SettingPage clickButtonSaveChanges() {
         WebElement webElement = webDriver.findElement(buttonSaveChanges);
-        webElement.click();
+        webDriverWaitElement(webElement).click();
         return this;
     }
 
     public SettingPage clickEditDetails() {
         WebElement webElement = webDriver.findElement(editDetailsWithWindowMaximize);
-        webElement.click();
+        webDriverWaitElement(webElement).click();
         return this;
     }
 
@@ -43,6 +45,11 @@ public class SettingPage {
         webElement.clear();
         webElement.sendKeys(name);
         return this;
+    }
+
+    public WebElement webDriverWaitElement(WebElement webElement) {
+        return (new WebDriverWait(webDriver, 15)).
+                until(ExpectedConditions.visibilityOf(webElement));
     }
 
 }
