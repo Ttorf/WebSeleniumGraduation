@@ -1,12 +1,8 @@
 package graduation.pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.util.List;
 
 public class ThemePage {
     private WebDriver webDriver;
@@ -26,13 +22,21 @@ public class ThemePage {
     private By fieldNumberDaysVoit = By.xpath("(//input[@class='form-control'])[3]");
     private By fieldNumberOfOptions = By.xpath("(//input[@class='form-control'])[4]");
     private By alertSuccess = By.xpath("//p[text()='Ваш голос был сохранен.']");
-    private By alertYouCantSendAnswersSoFastly = By.xpath("//p[text()='Вы не можете опубликовать сообщение так быстро после предыдущего.']");
     private By checksBoxAnswer = By.xpath("//span[text()='check_box_outline_blank']");
     private By activeSubscribeStatus = By.xpath("(//ul[contains(@class,'dropdown-menu dropdown-menu-right')]//button)[2]");
     private By dropDownMenu = By.xpath("(//button[@data-toggle='dropdown'])[2]");
 
     public ThemePage(WebDriver webDriver) {
         this.webDriver = webDriver;
+    }
+
+    private boolean isElementPresent(By by) {
+        try {
+            webDriver.findElement(by);
+            return true;
+        } catch (NoSuchElementException e) {
+            return false;
+        }
     }
 
     public String bodyTheme() {
@@ -158,11 +162,13 @@ public class ThemePage {
     }
 
     public ThemePage sendKeyFieldNameTheme(String message) {
+
         WebElement element = webDriver.findElement(fieldNameTheme);
         webDriverWaitTimerClick(element);
         element.clear();
         element.sendKeys(message);
         return this;
+
     }
 
     public ThemePage clickButtonReply() {
@@ -179,9 +185,9 @@ public class ThemePage {
     public ThemePage clickButtonSendResponse() throws InterruptedException {
         WebElement element = webDriver.findElement(buttonSubmit);
         element.click();
-        if (webDriverWaitWebElement(alertYouCantSendAnswersSoFastly).isDisplayed()) {
-            Thread.sleep(3000);
+        while (isElementPresent(buttonSubmit)) {
             element.click();
+            Thread.sleep(1000);
         }
         return this;
     }
