@@ -3,6 +3,8 @@ package graduation.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
@@ -36,10 +38,12 @@ public class HomePage {
         webElement.click();
         return this;
     }
-
+    //todo
     public HomePage openAuthorizationPanel() {
         WebElement element = webDriver.findElement(buttonAuthorization);
-        element.click();
+        (new WebDriverWait(webDriver, 10)).
+                until(ExpectedConditions.elementToBeClickable(element)).click();
+
         return this;
     }
 
@@ -72,13 +76,15 @@ public class HomePage {
         element.click();
         return this;
     }
-
+    //todo
     public HomePage clickButtonEnterLogin() {
         WebElement element = webDriver.findElement(buttonEnterLogin);
-        element.click();
+        (new WebDriverWait(webDriver, 10)).
+                until(ExpectedConditions.elementToBeClickable(element)).click();
+
         return this;
     }
-
+    //todo
     private HomePage sendKeysLogin(String login) {
         WebElement element = webDriver.findElement(loginInput);
         element.sendKeys(login);
@@ -96,15 +102,15 @@ public class HomePage {
         return this;
     }
 
+
+
     public void authorization(String login, String password) throws InterruptedException {
         webDriver.manage().window().maximize();
         webDriver.get("https://dev.n7lanit.ru/");
         openAuthorizationPanel();
-        Thread.sleep(2000);
         sendKeysLogin(login);
         sendKeysPass(password);
         clickButtonEnterLogin();
-        Thread.sleep(1000);
     }
 
     public String getAlert() {

@@ -1,5 +1,5 @@
 # language: ru
-  @Scenario1
+  @Scenario2
   @authorization
   Функция: Авторизация
 

@@ -27,7 +27,6 @@ public class StepsTestAuthorization {
     @Когда("^пользователь авторизуется$")
     public void authorize() throws InterruptedException {
         homePage.authorization(login, pass);
-        Thread.sleep(1000);
     }
 
     @Тогда("^пользователь получает сообщение \"(.*)\"$")
@@ -35,7 +34,6 @@ public class StepsTestAuthorization {
         this.message = string;
         String excepted = homePage.getAlert();
         Assert.assertEquals(excepted, message);
-        Thread.sleep(1000);
         homePage.closeWeb();
     }
 
