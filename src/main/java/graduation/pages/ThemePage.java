@@ -26,6 +26,7 @@ public class ThemePage {
     private By activeSubscribeStatus = By.xpath("(//ul[contains(@class,'dropdown-menu dropdown-menu-right')]//button)[2]");
     private By dropDownMenu = By.xpath("(//button[@data-toggle='dropdown'])[2]");
     private By alertYouCantSendAnswersSoFastly = By.xpath("//p[text()='Вы не можете опубликовать сообщение так быстро после предыдущего.']");
+    private By activeSubscribeStatusAfterSub = By.xpath("(//div[@class='dropdown']//button)[1]");
 
     public ThemePage(WebDriver webDriver) {
         this.webDriver = webDriver;
@@ -48,7 +49,7 @@ public class ThemePage {
     }
 
     public String dropDownMenuStatusGetText() {
-        StringBuilder stb = new StringBuilder(webDriverWaitVisibility(dropDownMenu).getText());
+        StringBuilder stb = new StringBuilder(webDriverWaitVisibility(activeSubscribeStatusAfterSub).getText());
         stb.delete(0, 9);
         return String.valueOf(stb);
     }
@@ -173,7 +174,7 @@ public class ThemePage {
         WebElement element = webDriver.findElement(buttonSubmit);
         element.click();
         if (webDriverWaitVisibility(alertYouCantSendAnswersSoFastly).isDisplayed()) {
-            Thread.sleep(3000);
+            Thread.sleep(1400);
             element.click();
         }
         return this;
