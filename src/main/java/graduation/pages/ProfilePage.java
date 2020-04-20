@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ProfilePage {
-    private final String login = "Torf4";
+    private final String login = "Torf5";
     private final String password = "654321ss";
     private By nickNameProfile = By.tagName("h1");
 
@@ -19,7 +19,7 @@ public class ProfilePage {
 
     public String getNickNameProfile() {
         WebElement webElement = webDriver.findElement(nickNameProfile);
-        return webDriverWaitTimerElement(webElement).getText();
+        return webDriverWaitTimerVisibility(webElement).getText();
     }
 
     public String getLogin() {
@@ -35,7 +35,7 @@ public class ProfilePage {
         return this;
     }
 
-    public WebElement webDriverWaitTimerElement(WebElement webElement) {
+    public WebElement webDriverWaitTimerVisibility(WebElement webElement) {
         return (new WebDriverWait(webDriver, 15)).
                 until(ExpectedConditions.visibilityOf(webElement));
     }

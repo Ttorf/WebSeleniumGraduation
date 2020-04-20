@@ -20,7 +20,7 @@ public class SettingPage {
 
     public String alertGetText() {
         WebElement webElement = webDriver.findElement(alertUpdate);
-        return webDriverWaitElement(webElement).getText();
+        return webDriverWaitTimerVisibility(webElement).getText();
     }
 
     public SettingPage closeWeb() {
@@ -30,13 +30,13 @@ public class SettingPage {
 
     public SettingPage clickButtonSaveChanges() {
         WebElement webElement = webDriver.findElement(buttonSaveChanges);
-        webDriverWaitElement(webElement).click();
+        webDriverWaitTimerVisibility(webElement).click();
         return this;
     }
 
     public SettingPage clickEditDetails() {
         WebElement webElement = webDriver.findElement(editDetailsWithWindowMaximize);
-        webDriverWaitElement(webElement).click();
+        webDriverWaitTimerVisibility(webElement).click();
         return this;
     }
 
@@ -47,7 +47,7 @@ public class SettingPage {
         return this;
     }
 
-    public WebElement webDriverWaitElement(WebElement webElement) {
+    public WebElement webDriverWaitTimerVisibility(WebElement webElement) {
         return (new WebDriverWait(webDriver, 15)).
                 until(ExpectedConditions.visibilityOf(webElement));
     }

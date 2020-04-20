@@ -43,32 +43,29 @@ public class ThemePage {
     }
 
     public ThemePage clickDropDownMenu() {
-        webDriverWaitWebElement(dropDownMenu).click();
+        webDriverWaitVisibility(dropDownMenu).click();
         return this;
     }
 
     public String dropDownMenuStatusGetText() {
-        WebElement element = webDriver.findElement(dropDownMenu);
-        StringBuilder stb = new StringBuilder(webDriverWaitElement(element).getText());
+        StringBuilder stb = new StringBuilder(webDriverWaitVisibility(dropDownMenu).getText());
         stb.delete(0, 9);
         return String.valueOf(stb);
     }
 
     public ThemePage clickRandomCheckBox() {
-        WebElement element = webDriver.findElement(checksBoxAnswer);
-        webDriverWaitElement(element).click();
+        webDriverWaitVisibility(checksBoxAnswer).click();
         return this;
     }
 
     public ThemePage clickButtonSaveYourAnswer() {
-        webDriverWaitWebElement(buttonSubmit).click();
+        webDriverWaitVisibility(buttonSubmit).click();
         return this;
     }
 
 
     public WebElement alertSuccessMessage() {
-        WebElement element = webDriver.findElement(alertSuccess);
-        return webDriverWaitElement(element);
+        return webDriverWaitVisibility(alertSuccess);
 
 
     }
@@ -131,13 +128,11 @@ public class ThemePage {
     }
 
     public boolean buttonSaveChangeThemeNameIsDisplayed() {
-        WebElement element = webDriver.findElement(buttonSaveChangeThemeName);
-        return webDriverWaitElement(element).isDisplayed();
+        return webDriverWaitVisibility(buttonSaveChangeThemeName).isDisplayed();
     }
 
     public String getNameTheme() {
-        WebElement element = webDriver.findElement(nameTheme);
-        return webDriverWaitElement(element).getText();
+        return webDriverWaitVisibility(nameTheme).getText();
 
     }
 
@@ -164,7 +159,7 @@ public class ThemePage {
     }
 
     public ThemePage clickButtonReply() {
-        webDriverWaitWebElement(buttonReply).click();
+        webDriverWaitVisibility(buttonReply).click();
         return this;
     }
 
@@ -177,7 +172,7 @@ public class ThemePage {
     public ThemePage clickButtonSendResponse() throws InterruptedException {
         WebElement element = webDriver.findElement(buttonSubmit);
         element.click();
-        if (webDriverWaitWebElement(alertYouCantSendAnswersSoFastly).isDisplayed()) {
+        if (webDriverWaitVisibility(alertYouCantSendAnswersSoFastly).isDisplayed()) {
             Thread.sleep(3000);
             element.click();
         }
@@ -199,14 +194,9 @@ public class ThemePage {
                 until(ExpectedConditions.elementToBeClickable(webElement)).click();
     }
 
-    public WebElement webDriverWaitWebElement(By webElement) {
+    public WebElement webDriverWaitVisibility(By webElement) {
         return (new WebDriverWait(webDriver, 15)).
                 until(ExpectedConditions.visibilityOfElementLocated(webElement));
-    }
-
-    public WebElement webDriverWaitElement(WebElement webElement) {
-        return (new WebDriverWait(webDriver, 15)).
-                until(ExpectedConditions.visibilityOf(webElement));
     }
 
 

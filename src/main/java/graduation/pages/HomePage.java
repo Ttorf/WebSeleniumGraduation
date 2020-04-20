@@ -34,27 +34,23 @@ public class HomePage {
     }
 
     public HomePage openSetting() {
-        WebElement element = webDriver.findElement(openSetting);
-        webDriverWaitTimerClick(element);
+        webDriverWaitTimerClick(openSetting);
         return this;
     }
 
     public HomePage openAuthorizationPanel() {
-        WebElement element = webDriver.findElement(buttonAuthorization);
-        webDriverWaitTimerClick(element);
+        webDriverWaitTimerClick(buttonAuthorization);
 
         return this;
     }
 
     public HomePage clickUserAvatar() {
-        WebElement element = webDriver.findElement(userAvatar);
-        webDriverWaitTimerClick(element);
+        webDriverWaitTimerClick(userAvatar);
         return this;
     }
 
     public HomePage clickOpenProfile() {
-        WebElement element = webDriver.findElement(openProfile);
-        webDriverWaitTimerClick(element);
+        webDriverWaitTimerClick(openProfile);
         return this;
     }
 
@@ -65,19 +61,17 @@ public class HomePage {
     }
 
     public HomePage clickCreatTheme() {
-        webDriverWaitElementClick(buttonCreatTheme);
+        webDriverWaitElementSubmit(buttonCreatTheme);
         return this;
     }
 
     public HomePage clickNewTheme() {
-        WebElement element = webDriver.findElement(buttonNewTheme);
-        webDriverWaitTimerClick(element);
+        webDriverWaitTimerClick(buttonNewTheme);
         return this;
     }
 
     public HomePage clickButtonEnterLogin() {
-        WebElement element = webDriver.findElement(buttonEnterLogin);
-        webDriverWaitTimerClick(element);
+        webDriverWaitTimerClick(buttonEnterLogin);
         return this;
     }
 
@@ -99,7 +93,7 @@ public class HomePage {
     }
 
 
-    public void authorization(String login, String password)  {
+    public void authorization(String login, String password) {
         webDriver.manage().window().maximize();
         webDriver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         webDriver.get("https://dev.n7lanit.ru/");
@@ -111,7 +105,7 @@ public class HomePage {
 
     public String getAlert() {
         WebElement element = webDriver.findElement(alert);
-        return webDriverWaitTimerGetText(element).getText();
+        return webDriverWaitTimerVisibility(element).getText();
     }
 
     private HomePage sendKeysNameTheme(String stringNameTheme) {
@@ -127,32 +121,32 @@ public class HomePage {
     }
 
 
-    public void writeNewTheme(String nameTheme, String bodyTheme)  {
+    public void writeNewTheme(String nameTheme, String bodyTheme) {
         sendKeysNameTheme(nameTheme);
         sendKeysBodyTheme(bodyTheme);
 
     }
 
-    public void creatNewTheme(String nameTheme, String bodyTheme)  {
+    public void creatNewTheme(String nameTheme, String bodyTheme) {
         clickNewTheme();
         writeNewTheme(nameTheme, bodyTheme);
         clickCreatTheme();
     }
 
-    public void webDriverWaitTimerClick(WebElement webElement) {
+    public void webDriverWaitTimerClick(By webElement) {
         (new WebDriverWait(webDriver, 15)).
                 until(ExpectedConditions.elementToBeClickable(webElement)).click();
     }
 
 
-    public WebElement webDriverWaitTimerGetText(WebElement webElement) {
+    public WebElement webDriverWaitTimerVisibility(WebElement webElement) {
         return (new WebDriverWait(webDriver, 15)).
                 until(ExpectedConditions.visibilityOf(webElement));
     }
 
-    public void webDriverWaitElementClick(By xp) {
+    public void webDriverWaitElementSubmit(By webElement) {
         (new WebDriverWait(webDriver, 15)).
-                until(ExpectedConditions.elementToBeClickable(xp)).submit();
+                until(ExpectedConditions.elementToBeClickable(webElement)).submit();
     }
 
 }
