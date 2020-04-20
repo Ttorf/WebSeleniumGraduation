@@ -32,6 +32,15 @@ public class ThemePage {
         this.webDriver = webDriver;
     }
 
+    private boolean isElemenExist(By by) {
+        try {
+            webDriver.findElement(by);
+            return true;
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
+
     public String bodyTheme() {
         return webDriver.findElement(bodyTheme).getText();
 
@@ -173,9 +182,12 @@ public class ThemePage {
     public ThemePage clickButtonSendResponse() throws InterruptedException {
         WebElement element = webDriver.findElement(buttonSubmit);
         element.click();
-        if (webDriverWaitVisibility(alertYouCantSendAnswersSoFastly).isDisplayed()) {
-            Thread.sleep(1500);
-            element.click();
+
+        if (isElemenExist(alertYouCantSendAnswersSoFastly)) {
+            if (webDriverWaitVisibility(alertYouCantSendAnswersSoFastly).isDisplayed()) {
+                Thread.sleep(1500);
+                element.click();
+            }
         }
         return this;
     }
