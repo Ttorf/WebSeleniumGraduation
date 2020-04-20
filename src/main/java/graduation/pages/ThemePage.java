@@ -198,6 +198,10 @@ public class ThemePage {
     }
 
     public boolean getMyLastRespons(String text) {
+        if (elementExist(buttonSubmit)) {
+            WebElement element = webDriver.findElement(buttonSubmit);
+            element.click();
+        }
         return (new WebDriverWait(webDriver, 15)).
                 until(ExpectedConditions.textToBePresentInElementLocated(fieldSendResponse, text));
     }

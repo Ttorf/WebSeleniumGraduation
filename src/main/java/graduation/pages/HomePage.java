@@ -138,7 +138,6 @@ public class HomePage {
                 until(ExpectedConditions.elementToBeClickable(webElement)).click();
     }
 
-
     public WebElement webDriverWaitTimerVisibility(WebElement webElement) {
         return (new WebDriverWait(webDriver, 15)).
                 until(ExpectedConditions.visibilityOf(webElement));
