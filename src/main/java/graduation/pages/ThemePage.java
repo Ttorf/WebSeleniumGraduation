@@ -32,7 +32,7 @@ public class ThemePage {
         this.webDriver = webDriver;
     }
 
-    private boolean isElementExist(By by) {
+    private boolean elementExist(By by) {
         try {
             webDriver.findElement(by);
             return true;
@@ -183,7 +183,7 @@ public class ThemePage {
         WebElement element = webDriver.findElement(buttonSubmit);
         element.click();
 
-        if (isElementExist(alertYouCantSendAnswersSoFastly)) {
+        if (elementExist(alertYouCantSendAnswersSoFastly)) {
             if (webDriverWaitVisibility(alertYouCantSendAnswersSoFastly).isDisplayed()) {
                 Thread.sleep(1500);
                 element.click();
