@@ -174,7 +174,7 @@ public class ThemePage {
         WebElement element = webDriver.findElement(buttonSubmit);
         element.click();
         if (webDriverWaitVisibility(alertYouCantSendAnswersSoFastly).isDisplayed()) {
-            Thread.sleep(1400);
+            Thread.sleep(1500);
             element.click();
         }
         return this;
