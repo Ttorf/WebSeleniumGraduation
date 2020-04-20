@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ProfilePage {
-    private final String login = "Torf5";
+    private final String login = "Torf6";
     private final String password = "654321ss";
     private By nickNameProfile = By.tagName("h1");
 
